@@ -239,7 +239,9 @@ public class Home extends javax.swing.JFrame {
      }//GEN-LAST:event_btnCorrectionActionPerformed
 
     private void btnResultOfRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResultOfRequestActionPerformed
-        // TODO add your handling code here:
+         EnterYourID enterYourID = new EnterYourID();
+        Constraints.convertFromGUIToGUI(this, enterYourID);
+        Constraints.closeThGUI(this);
     }//GEN-LAST:event_btnResultOfRequestActionPerformed
 
     /**

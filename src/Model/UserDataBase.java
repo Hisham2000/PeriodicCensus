@@ -103,4 +103,26 @@ public class UserDataBase {
         return false;
     }
     
+    public int returnTheChickState(int id)
+    {
+        int chickState=-1;
+        try {
+            String query = "SELECT checkState FROM dataofuser WHERE U_SSN = "+id;
+            Statement statement = connection.createStatement();
+            System.out.println("We are in returnChickState :) ");
+            System.out.println(chickState);
+            ResultSet resultSet = statement.executeQuery(query);
+            System.out.println("After Statement ");
+            System.out.println("Has Done ");
+            while (resultSet.next()) {
+            System.out.println("in while loop");
+                   chickState = resultSet.getInt("checkState");
+                   System.out.println(chickState);
+                }
+            return chickState;
+        } catch (Exception e) {
+            return chickState;
+        }
+    }
+    
 }

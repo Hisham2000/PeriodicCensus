@@ -24,4 +24,8 @@ public class UserController {
         return userDataBase.update(id, name, martialState, adredd, mobNum, sex, age);
     }
     
+    public int chickState(int id)
+    {
+        return userDataBase.returnTheChickState(id);
+    }
 }
