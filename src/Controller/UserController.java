@@ -2,9 +2,9 @@
 package Controller;
 
 import Model.UserDataBase;
-import java.util.ArrayList;
 
 public class UserController {
+    
     UserDataBase userDataBase = UserDataBase.getInstance();
     
     public boolean chickUserNameAndPassword(String name , int password)

@@ -1,11 +1,8 @@
 
 package View;
 
-import javax.swing.JTextField;
-import java.lang.Integer;
 import javax.swing.JOptionPane;
 import Controller.UserController;
-import static View.Constraints.*;
 
 
 public class LogIn extends javax.swing.JFrame {
@@ -14,9 +11,7 @@ public class LogIn extends javax.swing.JFrame {
         initComponents();
         Constraints.askForRequest(txtUserAccount);
     }
-    
-    //Constraints constraints = new Constraints();
-            
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -152,7 +147,6 @@ public class LogIn extends javax.swing.JFrame {
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
         Constraints.closeThGUI(this);
-        // TODO add your handling code here:
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void txtUserAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserAccountActionPerformed
@@ -163,7 +157,7 @@ public class LogIn extends javax.swing.JFrame {
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         String userName;
         int password;
-        if (chickEmpty(txtPassword) && chickEmpty(txtUserAccount) && chickInteger(txtPassword)) {
+        if (Constraints.chickEmpty(txtPassword) && Constraints.chickEmpty(txtUserAccount) && Constraints.chickInteger(txtPassword)) {
             userName = Constraints.getDataFromGUI(txtUserAccount);
             password = Integer.parseInt(Constraints.getDataFromGUI(txtPassword));
             UserController userController =new UserController();
@@ -178,7 +172,6 @@ public class LogIn extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "You Put Invalid Value ");
         Constraints.clearText(txtPassword);
         Constraints.clearText(txtUserAccount);
-        
     }//GEN-LAST:event_btnLoginActionPerformed
 
     /**

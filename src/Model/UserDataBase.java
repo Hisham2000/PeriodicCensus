@@ -1,11 +1,6 @@
 package Model;
 
-//import Model.OfficerData;
-import java.awt.List;
-import java.lang.System.Logger;
-import java.lang.System.Logger.Level;
 import java.sql.*;
-import java.util.*;
 import javax.swing.JOptionPane;
 
 public class UserDataBase {
@@ -54,7 +49,7 @@ public class UserDataBase {
         boolean checkUser;
         try {
             String query = "SELECT U_SSN  ,FirstName FROM dataofuser WHERE U_SSN = " + password + " AND FirstName = '" + userName + "'";
-            PreparedStatement statement = connection.prepareStatement(query);
+            Statement statement = connection.createStatement();
             ResultSet reulsSet = statement.executeQuery(query);
             checkUser = reulsSet.next();
         } catch (Exception e) {
@@ -63,66 +58,56 @@ public class UserDataBase {
         return checkUser;
     }
 
-    public String searchByID(int Id)
-    {
+    public String searchByID(int Id) {
         String myOwnD = null;
         try {
-            String query = "SELECT U_SSN , FirstName , lastName , mirtalState , Address , mobileNO , sex , AGE FROM dataofuser WHERE U_SSN = " + Id ;
+            String query = "SELECT U_SSN , FirstName , lastName , mirtalState , Address , mobileNO , sex , AGE FROM dataofuser WHERE U_SSN = " + Id;
             Statement statement = connection.createStatement();
-            System.out.println("We are in search :) ");
             ResultSet resultSet = statement.executeQuery(query);
-            System.out.println("After Statement ");
-            System.out.println("Has Done ");
             while (resultSet.next()) {
-            System.out.println("in while loop");
-            myOwnD = resultSet.getInt("U_SSN")+ " " +resultSet.getString("FirstName")
-                    + " " + resultSet.getString("lastName") + " "  ;
-            myOwnD +=  resultSet.getString("mirtalState") + " "+ resultSet.getString("Address")
-                    + " "+ resultSet.getInt("mobileNO"); 
-            myOwnD +=  " "+resultSet.getString("sex") + " "+ resultSet.getInt("AGE");
-                    System.out.println(myOwnD);
-                }
+                myOwnD = resultSet.getInt("U_SSN") + " " + resultSet.getString("FirstName")
+                        + " " + resultSet.getString("lastName") + " ";
+                myOwnD += resultSet.getString("mirtalState") + " " + resultSet.getString("Address")
+                        + " " + resultSet.getInt("mobileNO");
+                myOwnD += " " + resultSet.getString("sex") + " " + resultSet.getInt("AGE");
+                System.out.println(myOwnD);
+            }
         } catch (Exception e) {
             return myOwnD;
         }
         return myOwnD;
     }
-    
-    public boolean update(int id, String name, String martialState, String adress, int mobNum, String sex, int age)
-    {
+
+    public boolean update(int id, String name, String martialState, String adress, int mobNum, String sex, int age) {
         int recordUpdates = 0;
         try {
-            String query = "UPDATE dataofuser SET FirstName = ' "+name+" ', AGE = " + age+ ", mirtalState = '" + martialState
-                    +"', Address = '"+adress+"', mobileNO = " + mobNum +", sex = '"+sex+"' WHERE U_SSN = "+id;
+            String query = "UPDATE dataofuser SET FirstName = ' " + name + " ', AGE = " + age + ", mirtalState = '" + martialState
+                    + "', Address = '" + adress + "', mobileNO = " + mobNum + ", sex = '" + sex + "' WHERE U_SSN = " + id;
             Statement statement = connection.createStatement();
             recordUpdates = statement.executeUpdate(query);
-            if(recordUpdates != 0) return true;
+            if (recordUpdates != 0) {
+                return true;
+            }
         } catch (Exception e) {
             return false;
         }
         return false;
     }
-    
-    public int returnTheChickState(int id)
-    {
-        int chickState=-1;
+
+    public int returnTheChickState(int id) {
+        int chickState = -1;
         try {
-            String query = "SELECT checkState FROM dataofuser WHERE U_SSN = "+id;
+            String query = "SELECT checkState FROM dataofuser WHERE U_SSN = " + id;
             Statement statement = connection.createStatement();
-            System.out.println("We are in returnChickState :) ");
-            System.out.println(chickState);
             ResultSet resultSet = statement.executeQuery(query);
-            System.out.println("After Statement ");
-            System.out.println("Has Done ");
             while (resultSet.next()) {
-            System.out.println("in while loop");
-                   chickState = resultSet.getInt("checkState");
-                   System.out.println(chickState);
-                }
+                chickState = resultSet.getInt("checkState");
+                System.out.println(chickState);
+            }
             return chickState;
         } catch (Exception e) {
             return chickState;
         }
     }
-    
+
 }
