@@ -1,15 +1,13 @@
-
 package View;
 
-import javax.swing.JOptionPane;
-import Controller.UserController;
+import Services.UsingForJFrame;
 
 public class Home extends javax.swing.JFrame {
 
     public Home() {
         initComponents();
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -189,42 +187,27 @@ public class Home extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
-        Constraints.closeThGUI(this);
+        UsingForJFrame.closeThGUI(this);
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void btnSendRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendRequestActionPerformed
         Request request = new Request();
-        Constraints.convertFromGUIToGUI(this, request);
-        Constraints.closeThGUI(this);
+        UsingForJFrame.convertFromGUIToGUI(this, request);
+        UsingForJFrame.closeThGUI(this);
     }//GEN-LAST:event_btnSendRequestActionPerformed
 
     private void btnCorrectionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCorrectionActionPerformed
-            String inputId = JOptionPane.showInputDialog("Please enter you ID ");
-            if(!inputId.isEmpty())
-            {
-                try{
-                    int id = Integer.parseInt(inputId);
-                    UserController userController = new UserController();
-                    String data = userController.searchByIDForUser(id);
-                    if(data == null )
-                        JOptionPane.showMessageDialog(null, "Please Enter a corrected Data :)");
-                    else
-                    {
-                        CorrectionData correctionData = new CorrectionData(data);
-                        Constraints.convertFromGUIToGUI(this, correctionData);
-                        Constraints.closeThGUI(this);
-                    }
-                }catch(NumberFormatException e){
-                    JOptionPane.showMessageDialog(null, "Please Enter An Integer Value");
-                }
-            }
-            else JOptionPane.showMessageDialog(null, "you An Empty Value Please Try Again ");
+
+        EnteringForCorrection enteringForCorrection = new EnteringForCorrection();
+        UsingForJFrame.convertFromGUIToGUI(this, enteringForCorrection);
+        UsingForJFrame.closeThGUI(this);
+
      }//GEN-LAST:event_btnCorrectionActionPerformed
 
     private void btnResultOfRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResultOfRequestActionPerformed
-         EnterYourID enterYourID = new EnterYourID();
-        Constraints.convertFromGUIToGUI(this, enterYourID);
-        Constraints.closeThGUI(this);
+        EnterYourID enterYourID = new EnterYourID();
+        UsingForJFrame.convertFromGUIToGUI(this, enterYourID);
+        UsingForJFrame.closeThGUI(this);
     }//GEN-LAST:event_btnResultOfRequestActionPerformed
 
     /**

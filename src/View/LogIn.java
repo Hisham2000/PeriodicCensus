@@ -3,13 +3,14 @@ package View;
 
 import javax.swing.JOptionPane;
 import Controller.UserController;
-
+import Services.UsingForJFrame;
+import Services.UsingForTextFields;
 
 public class LogIn extends javax.swing.JFrame {
 
     public LogIn() {
         initComponents();
-        Constraints.askForRequest(txtUserAccount);
+        UsingForTextFields.askForRequest(txtUserAccount);
     }
 
     @SuppressWarnings("unchecked")
@@ -146,7 +147,7 @@ public class LogIn extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
-        Constraints.closeThGUI(this);
+        UsingForJFrame.closeThGUI(this);
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void txtUserAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserAccountActionPerformed
@@ -157,21 +158,21 @@ public class LogIn extends javax.swing.JFrame {
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         String userName;
         int password;
-        if (Constraints.chickEmpty(txtPassword) && Constraints.chickEmpty(txtUserAccount) && Constraints.chickInteger(txtPassword)) {
-            userName = Constraints.getDataFromGUI(txtUserAccount);
-            password = Integer.parseInt(Constraints.getDataFromGUI(txtPassword));
+        if (UsingForTextFields.chickEmpty(txtPassword) && UsingForTextFields.chickEmpty(txtUserAccount) && UsingForTextFields.chickInteger(txtPassword)) {
+            userName = UsingForJFrame.getDataFromGUI(txtUserAccount);
+            password = UsingForJFrame.getIntFromGUI(txtPassword);
             UserController userController =new UserController();
             if(userController.chickUserNameAndPassword(userName, password))
             {
                 Home home = new Home();
-                Constraints.convertFromGUIToGUI(this, home);
-                Constraints.closeThGUI(this);
+                UsingForJFrame.convertFromGUIToGUI(this, home);
+                UsingForJFrame.closeThGUI(this);
             }
             else JOptionPane.showMessageDialog(null, "Please try again with true data ");
-        } else
-            JOptionPane.showMessageDialog(null, "You Put Invalid Value ");
-        Constraints.clearText(txtPassword);
-        Constraints.clearText(txtUserAccount);
+        } else JOptionPane.showMessageDialog(null, "You Put Invalid Value ");
+        UsingForTextFields.clearText(txtPassword);
+        UsingForTextFields.clearText(txtUserAccount);
+        UsingForTextFields.askForRequest(txtUserAccount);
     }//GEN-LAST:event_btnLoginActionPerformed
 
     /**

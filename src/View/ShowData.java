@@ -2,7 +2,7 @@
 package View;
 
 import javax.swing.table.DefaultTableModel;
-
+import Services.UsingForJFrame;
 
 public class ShowData extends javax.swing.JFrame {
 
@@ -131,12 +131,12 @@ public class ShowData extends javax.swing.JFrame {
     
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         Home home = new Home();   
-        Constraints.convertFromGUIToGUI(this, home);
-        Constraints.closeThGUI(this);
+        UsingForJFrame.convertFromGUIToGUI(this, home);
+        UsingForJFrame.closeThGUI(this);
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Constraints.closeThGUI(this);
+        UsingForJFrame.closeThGUI(this);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

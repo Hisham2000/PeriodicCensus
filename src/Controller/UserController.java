@@ -28,4 +28,8 @@ public class UserController {
     {
         return userDataBase.returnTheChickState(id);
     }
+    public boolean  insertData(int id, String name, int age, String martialStatus, String adress, int mobileNO, String sex)
+    {
+        return userDataBase.insertData(id, name, age, martialStatus, adress, mobileNO, sex);
+    }
 }

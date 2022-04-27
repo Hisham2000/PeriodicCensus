@@ -1,15 +1,15 @@
-
 package View;
 
 import Controller.UserController;
-import javax.swing.JOptionPane;
 import Services.UsingForJFrame;
 import Services.UsingForTextFields;
+import javax.swing.JOptionPane;
 
-public class EnterYourID extends javax.swing.JFrame {
+public class EnteringForCorrection extends javax.swing.JFrame {
 
-    public EnterYourID() {
+    public EnteringForCorrection() {
         initComponents();
+        UsingForTextFields.askForRequest(txtID);
     }
 
     @SuppressWarnings("unchecked")
@@ -98,7 +98,7 @@ public class EnterYourID extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(82, Short.MAX_VALUE))
+                .addContainerGap(106, Short.MAX_VALUE))
             .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
@@ -133,24 +133,24 @@ public class EnterYourID extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void btnSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendActionPerformed
-        if(UsingForTextFields.chickEmpty(txtID))
-        {
-            if(UsingForTextFields.chickInteger(txtID))
-            {
-                UserController userController =new UserController();
-                int chickState = userController.chickState(Integer.parseInt(txtID.getText()));
-                if(chickState == -1) JOptionPane.showMessageDialog(null, "You Put an invalid or ID doesnot exist ");
-                else if (chickState == 0 ) JOptionPane.showMessageDialog(null, "You Are Still in Wainting OFficie Doesnot see you ");
-                else if (chickState == 1)  JOptionPane.showMessageDialog(null, "You are Accepted ");
-                else if (chickState == 2)  JOptionPane.showMessageDialog(null, "You are rejected Because of You put Wrong Data Please Enter YOur Correct Data Again ");
+        String inputId = UsingForJFrame.getDataFromGUI(txtID);
+        if (!inputId.isEmpty()) {
+            try {
+                int id = Integer.parseInt(inputId);
+                UserController userController = new UserController();
+                String data = userController.searchByIDForUser(id);
+                if (data == null) {
+                    JOptionPane.showMessageDialog(null, "Please Enter a corrected Data :)");
+                } else {
+                    CorrectionData correctionData = new CorrectionData(data);
+                    UsingForJFrame.convertFromGUIToGUI(this, correctionData);
+                    UsingForJFrame.closeThGUI(this);
+                }
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Please Enter An Integer Value");
             }
-            else
-            {
-                JOptionPane.showMessageDialog(null, "Please Enter an Integer Value :)");
-            }
-        }
-        else    JOptionPane.showMessageDialog(null, "you Enter an Empty Field Please Enter it :)");
-        UsingForTextFields.clearText(txtID);
+        } else
+            JOptionPane.showMessageDialog(null, "you An Empty Value Please Try Again ");
     }//GEN-LAST:event_btnSendActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
@@ -176,20 +176,20 @@ public class EnterYourID extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(EnterYourID.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EnteringForCorrection.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(EnterYourID.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EnteringForCorrection.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(EnterYourID.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EnteringForCorrection.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(EnterYourID.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EnteringForCorrection.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new EnterYourID().setVisible(true);
+                new EnteringForCorrection().setVisible(true);
             }
         });
     }

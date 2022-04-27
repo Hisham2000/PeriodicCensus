@@ -2,7 +2,8 @@ package View;
 
 import Controller.UserController;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
+import Services.UsingForJFrame;
+import Services.UsingForTextFields;
 
 public class CorrectionData extends javax.swing.JFrame {
 
@@ -29,13 +30,13 @@ public class CorrectionData extends javax.swing.JFrame {
         initComponents();
         userDataInClass = userDataInClass.concat(data);
         arrData = data.split(" ");
-        setDataInFields(txtID, arrData[0]);
-        setDataInFields(txtName, arrData[1]+" " + arrData[2]);
-        setDataInFields(txtmstate, arrData[3]);
-        setDataInFields(txtAdress, arrData[4]);
-        setDataInFields(txtNumber, arrData[5]);
-        setDataInFields(txtGender, arrData[6]);
-        setDataInFields(txtAge, arrData[7]);
+        UsingForTextFields.setDataInFields(txtID, arrData[0]);
+        UsingForTextFields.setDataInFields(txtName, arrData[1]+" " + arrData[2]);
+        UsingForTextFields.setDataInFields(txtmstate, arrData[3]);
+        UsingForTextFields.setDataInFields(txtAdress, arrData[4]);
+        UsingForTextFields.setDataInFields(txtNumber, arrData[5]);
+        UsingForTextFields.setDataInFields(txtGender, arrData[6]);
+        UsingForTextFields.setDataInFields(txtAge, arrData[7]);
         
     }
 
@@ -282,18 +283,16 @@ public class CorrectionData extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void setDataInVariables() {
-        id = Constraints.getIntFromGUI(txtID);
-        name = Constraints.getDataFromGUI(txtName);
-        martialState = Constraints.getDataFromGUI(txtmstate);
-        adress = Constraints.getDataFromGUI(txtAdress);
-        Mobno = Constraints.getIntFromGUI(txtNumber);
-        sex = Constraints.getDataFromGUI(txtGender);
-        age = Constraints.getIntFromGUI(txtAge);
+        id = UsingForJFrame.getIntFromGUI(txtID);
+        name = UsingForJFrame.getDataFromGUI(txtName);
+        martialState = UsingForJFrame.getDataFromGUI(txtmstate);
+        adress = UsingForJFrame.getDataFromGUI(txtAdress);
+        Mobno = UsingForJFrame.getIntFromGUI(txtNumber);
+        sex = UsingForJFrame.getDataFromGUI(txtGender);
+        age = UsingForJFrame.getIntFromGUI(txtAge);
     }
 
-    private void setDataInFields(JTextField jTextField, String data) {
-        jTextField.setText(data);
-    }
+    
 
     private boolean equalityOfData()
     {
@@ -311,7 +310,7 @@ public class CorrectionData extends javax.swing.JFrame {
     }
 
     private void BtnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnExitActionPerformed
-        Constraints.closeThGUI(this);
+        UsingForJFrame.closeThGUI(this);
     }//GEN-LAST:event_BtnExitActionPerformed
 
     private void btnSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendActionPerformed
@@ -320,8 +319,8 @@ public class CorrectionData extends javax.swing.JFrame {
         boolean cheaker = equalityOfData();
         if(cheaker){
             JOptionPane.showMessageDialog(null, "you doesnot edit any of the data please edit it and send it again ");
-            Constraints.convertFromGUIToGUI(this, correctionData);
-            Constraints.closeThGUI(this);
+            UsingForJFrame.convertFromGUIToGUI(this, correctionData);
+            UsingForJFrame.closeThGUI(this);
         }
         else
         {
@@ -332,17 +331,16 @@ public class CorrectionData extends javax.swing.JFrame {
             else 
             {
                 JOptionPane.showMessageDialog(null, "there was an error please try again :)");
-                Constraints.convertFromGUIToGUI(this, correctionData);
-                Constraints.closeThGUI(this);
+                UsingForJFrame.convertFromGUIToGUI(this, correctionData);
+                UsingForJFrame.closeThGUI(this);
             }
-            
         }
     }//GEN-LAST:event_btnSendActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         Home home = new Home();
-        Constraints.convertFromGUIToGUI(this, home);
-        Constraints.closeThGUI(this);
+        UsingForJFrame.convertFromGUIToGUI(this, home);
+        UsingForJFrame.closeThGUI(this);
     }//GEN-LAST:event_btnBackActionPerformed
 
     /**

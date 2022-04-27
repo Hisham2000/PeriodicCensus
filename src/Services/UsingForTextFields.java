@@ -1,7 +1,6 @@
 
 package Services;
 
-import javax.swing.JFrame;
 import javax.swing.JTextField;
 
 public class UsingForTextFields {
@@ -15,9 +14,8 @@ public class UsingForTextFields {
     public static boolean chickInteger(JTextField jTextField)
     {
         String data = jTextField.getText();
-        int number;
         try{
-            number=Integer.parseInt(data);
+            int number=Integer.parseInt(data);
             return true;
         }catch(NumberFormatException ex){
             return false;
@@ -34,4 +32,7 @@ public class UsingForTextFields {
         textField.requestFocus();
     }
     
+    public static void setDataInFields(JTextField jTextField, String data) {
+        jTextField.setText(data);
+    }
 }

@@ -61,12 +61,12 @@ public class UserDataBase {
     public String searchByID(int Id) {
         String myOwnD = null;
         try {
-            String query = "SELECT U_SSN , FirstName , lastName , mirtalState , Address , mobileNO , sex , AGE FROM dataofuser WHERE U_SSN = " + Id;
+            String query = "SELECT U_SSN , FirstName , mirtalState , Address , mobileNO , sex , AGE FROM dataofuser WHERE U_SSN = " + Id;
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(query);
             while (resultSet.next()) {
                 myOwnD = resultSet.getInt("U_SSN") + " " + resultSet.getString("FirstName")
-                        + " " + resultSet.getString("lastName") + " ";
+                        + " ";
                 myOwnD += resultSet.getString("mirtalState") + " " + resultSet.getString("Address")
                         + " " + resultSet.getInt("mobileNO");
                 myOwnD += " " + resultSet.getString("sex") + " " + resultSet.getInt("AGE");
@@ -108,6 +108,22 @@ public class UserDataBase {
         } catch (Exception e) {
             return chickState;
         }
+    }
+    
+    public boolean insertData(int id ,String name, int age, String martialStatus, String adress, int mobileNO,String sex)
+    {
+        int numberOfChangingQuery=0;
+        try {
+            String query = "INSERT INTO dataofuser VALUES ("+id+", '"+name+"', "+age+", '"+martialStatus+"', '"+adress+"', "+mobileNO+", '"+sex+"', 0, 456781";
+            System.out.println("After Insert statement");
+            Statement statement = connection.createStatement();
+            numberOfChangingQuery = statement.executeUpdate(query);
+            System.out.println(numberOfChangingQuery);
+            if(numberOfChangingQuery !=0) return true;
+        } catch (Exception e) {
+            return false;
+        }
+        return false;
     }
 
 }

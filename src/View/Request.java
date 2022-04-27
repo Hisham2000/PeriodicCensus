@@ -1,17 +1,18 @@
 
 package View;
 
-import javax.swing.JTextField;
-import static View.Constraints.*;
+import Controller.UserController;
+import Services.UsingForJFrame;
+import Services.UsingForTextFields;
 import javax.swing.JOptionPane;
 
 public class Request extends javax.swing.JFrame {
     int id; String name; int age; String martialState;
-    String adress; int mobNum; String sex; String email;
+    String adress; int mobNum; String sex; 
 
     public Request() {
         initComponents();
-        Constraints.askForRequest(txtName);
+        UsingForTextFields.askForRequest(txtName);
     }
 
     @SuppressWarnings("unchecked")
@@ -30,8 +31,6 @@ public class Request extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         txtGender = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        txtEMail = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
         txtmstate = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         txtNumber = new javax.swing.JTextField();
@@ -101,11 +100,6 @@ public class Request extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(102, 102, 102));
         jLabel5.setText("Add Gender : ");
 
-        jLabel6.setBackground(new java.awt.Color(102, 102, 102));
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel6.setText("Add E-Mail :");
-
         jLabel7.setBackground(new java.awt.Color(102, 102, 102));
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(102, 102, 102));
@@ -151,45 +145,43 @@ public class Request extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel2))
-                                .addGap(53, 53, 53)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtGender, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jLabel6)
-                                            .addComponent(jLabel4)
-                                            .addComponent(jLabel9))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel3)
-                                        .addGap(2, 2, 2))))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel7)
-                                    .addComponent(jLabel8))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtmstate, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel2))
+                        .addGap(53, 53, 53)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtGender, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(34, 34, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addGap(2, 2, 2)))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtEMail, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtAdress, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap())
+                            .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(btnShowData)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnBack)
-                        .addContainerGap())))
+                        .addComponent(btnBack))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jLabel8)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel7)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtmstate, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel9)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtAdress, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -211,14 +203,12 @@ public class Request extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(txtmstate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6)
-                    .addComponent(txtEMail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel9)
+                    .addComponent(txtAdress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(txtNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9)
-                    .addComponent(txtAdress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnShowData)
@@ -241,47 +231,47 @@ public class Request extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnExitActionPerformed
-        Constraints.closeThGUI(this);
+        UsingForJFrame.closeThGUI(this);
     }//GEN-LAST:event_BtnExitActionPerformed
     
     
     private void btnShowDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowDataActionPerformed
-        if(Constraints.chickEmpty(txtID) && Constraints.chickEmpty(txtName) && Constraints.chickEmpty(txtAge) && Constraints.chickEmpty(txtmstate) && Constraints.chickEmpty(txtAdress) && Constraints.chickEmpty(txtNumber) && Constraints.chickEmpty(txtGender) && Constraints.chickEmpty(txtEMail))
+        if(UsingForTextFields.chickEmpty(txtID) && UsingForTextFields.chickEmpty(txtName) && UsingForTextFields.chickEmpty(txtAge) && UsingForTextFields.chickEmpty(txtmstate) && UsingForTextFields.chickEmpty(txtAdress) && UsingForTextFields.chickEmpty(txtNumber) && UsingForTextFields.chickEmpty(txtGender))
         {
-            name = Constraints.getDataFromGUI(txtName);
-            martialState = Constraints.getDataFromGUI(txtmstate);
-            adress = Constraints.getDataFromGUI(txtAdress);
-            sex = Constraints.getDataFromGUI(txtGender);
-            email = Constraints.getDataFromGUI(txtEMail);
-            if(Constraints.chickInteger(txtID) && Constraints.chickInteger(txtAge) && Constraints.chickInteger(txtNumber))
+            name = UsingForJFrame.getDataFromGUI(txtName);
+            martialState = UsingForJFrame.getDataFromGUI(txtmstate);
+            adress = UsingForJFrame.getDataFromGUI(txtAdress);
+            sex = UsingForJFrame.getDataFromGUI(txtGender);
+            if(UsingForTextFields.chickInteger(txtID) && UsingForTextFields.chickInteger(txtAge) && UsingForTextFields.chickInteger(txtNumber))
             {
-                id = Integer.parseInt(Constraints.getDataFromGUI(txtID));
-                age = Integer.parseInt(Constraints.getDataFromGUI(txtAge));
-                mobNum = Integer.parseInt(Constraints.getDataFromGUI(txtNumber));
-                ShowData showData = new ShowData(id, name, age, martialState, adress, mobNum, sex);
-                convertFromGUIToGUI(this, showData);
-                closeThGUI(this);
+                id = UsingForJFrame.getIntFromGUI(txtID);
+                age = UsingForJFrame.getIntFromGUI(txtAge);
+                mobNum = UsingForJFrame.getIntFromGUI(txtNumber);
+                UserController userController = new UserController();
+                if(userController.insertData(id, name, age, martialState, adress, mobNum, sex))
+                {
+                    ShowData showData = new ShowData(id, name, age, martialState, adress, mobNum, sex);
+                    UsingForJFrame.convertFromGUIToGUI(this, showData);
+                    UsingForJFrame.closeThGUI(this);
+                }
             }
              else JOptionPane.showMessageDialog(null, "You Put String In An Integer Faild Please try again ");
         }
         else JOptionPane.showMessageDialog(null, "Dont Leave The Field Empty ");
-        Constraints.clearText(txtID);
-        Constraints.clearText(txtName);
-        Constraints.clearText(txtAge);
-        Constraints.clearText(txtmstate);
-        Constraints.clearText(txtAdress);
-        Constraints.clearText(txtGender);
-        Constraints.clearText(txtNumber);
-        Constraints.clearText(txtEMail);
-        
-        
-        
+        UsingForTextFields.clearText(txtID);
+        UsingForTextFields.clearText(txtName);
+        UsingForTextFields.clearText(txtAge);
+        UsingForTextFields.clearText(txtmstate);
+        UsingForTextFields.clearText(txtAdress);
+        UsingForTextFields.clearText(txtGender);
+        UsingForTextFields.clearText(txtNumber);
+        UsingForTextFields.askForRequest(txtName);
     }//GEN-LAST:event_btnShowDataActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
        Home home = new Home();
-       Constraints.convertFromGUIToGUI(this, home);
-       Constraints.closeThGUI(this);
+       UsingForJFrame.convertFromGUIToGUI(this, home);
+       UsingForJFrame.closeThGUI(this);
     }//GEN-LAST:event_btnBackActionPerformed
 
     /**
@@ -328,7 +318,6 @@ public class Request extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -336,7 +325,6 @@ public class Request extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField txtAdress;
     private javax.swing.JTextField txtAge;
-    private javax.swing.JTextField txtEMail;
     private javax.swing.JTextField txtGender;
     private javax.swing.JTextField txtID;
     private javax.swing.JTextField txtName;
