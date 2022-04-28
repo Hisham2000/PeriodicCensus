@@ -18,7 +18,7 @@ public class CorrectionData extends javax.swing.JFrame {
     
     private String[] arrData;
          
-    private int[] changes=new int[5];
+    private int[] changes=new int[6];
     
     
     public CorrectionData() {
@@ -286,6 +286,7 @@ public class CorrectionData extends javax.swing.JFrame {
     private void btnSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendActionPerformed
         setDataInVariables();
         CorrectionData correctionData = new CorrectionData(userDataInClass , ID);
+        System.out.println(arrData.length + "  " + changes.length);
         boolean cheaker = equalityOfData();
         if(cheaker){
             JOptionPane.showMessageDialog(null, "you doesnot edit any of the data please edit it and send it again ");
