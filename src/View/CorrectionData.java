@@ -6,8 +6,7 @@ import Services.UsingForJFrame;
 import Services.UsingForTextFields;
 
 public class CorrectionData extends javax.swing.JFrame {
-
-    private int id;
+    int ID;
     private String name;
     private String martialState;
     private String adress;
@@ -17,26 +16,26 @@ public class CorrectionData extends javax.swing.JFrame {
     private int counterOfChanges;
     private String userDataInClass="";
     
-    private String[] arrData; // the data here 0ID 1FName 2LastName 3martialstate 4adress 5mobilenumber 6sex 7age
+    private String[] arrData;
          
-    private int[] changes=new int[7]; // the data is 0ID 1Name 2martialstate 3adress 4mobilenumber 5sex 6age
+    private int[] changes=new int[5];
     
     
     public CorrectionData() {
         initComponents();
     }
 
-    public CorrectionData(String data) {
+    public CorrectionData(String data, int id) {
         initComponents();
+        ID = id;
         userDataInClass = userDataInClass.concat(data);
         arrData = data.split(" ");
-        UsingForTextFields.setDataInFields(txtID, arrData[0]);
-        UsingForTextFields.setDataInFields(txtName, arrData[1]+" " + arrData[2]);
-        UsingForTextFields.setDataInFields(txtmstate, arrData[3]);
-        UsingForTextFields.setDataInFields(txtAdress, arrData[4]);
-        UsingForTextFields.setDataInFields(txtNumber, arrData[5]);
-        UsingForTextFields.setDataInFields(txtGender, arrData[6]);
-        UsingForTextFields.setDataInFields(txtAge, arrData[7]);
+        UsingForTextFields.setDataInFields(txtName, arrData[0]);
+        UsingForTextFields.setDataInFields(txtmstate, arrData[1]);
+        UsingForTextFields.setDataInFields(txtAdress, arrData[2]);
+        UsingForTextFields.setDataInFields(txtNumber, arrData[3]);
+        UsingForTextFields.setDataInFields(txtGender, arrData[4]);
+        UsingForTextFields.setDataInFields(txtAge, arrData[5]);
         
     }
 
@@ -54,12 +53,8 @@ public class CorrectionData extends javax.swing.JFrame {
         txtName = new javax.swing.JTextField();
         txtAge = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        txtID = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
         txtGender = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        txtEMail = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
         txtmstate = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         txtNumber = new javax.swing.JTextField();
@@ -124,20 +119,10 @@ public class CorrectionData extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(102, 102, 102));
         jLabel3.setText("Add Age :");
 
-        jLabel4.setBackground(new java.awt.Color(102, 102, 102));
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel4.setText("Add ID :");
-
         jLabel5.setBackground(new java.awt.Color(102, 102, 102));
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(102, 102, 102));
         jLabel5.setText("Add Gender : ");
-
-        jLabel6.setBackground(new java.awt.Color(102, 102, 102));
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel6.setText("Add E-Mail :");
 
         jLabel7.setBackground(new java.awt.Color(102, 102, 102));
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -188,43 +173,34 @@ public class CorrectionData extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel2))
-                                .addGap(53, 53, 53)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtGender, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jLabel6)
-                                            .addComponent(jLabel4)
-                                            .addComponent(jLabel9))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel3)
-                                        .addGap(2, 2, 2))))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel7)
-                                    .addComponent(jLabel8))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtmstate, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel2))
+                        .addGap(53, 53, 53)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtEMail, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtAdress, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtGender, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addGap(2, 2, 2)
+                                .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel8)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(btnSend)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnBack)))
+                        .addComponent(btnBack))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtmstate, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel9)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtAdress, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
@@ -244,24 +220,20 @@ public class CorrectionData extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(txtGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4)
-                    .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel8)
+                        .addComponent(txtNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel5)
+                        .addComponent(txtGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(txtmstate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6)
-                    .addComponent(txtEMail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(txtNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9)
                     .addComponent(txtAdress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(48, 48, 48)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSend)
                     .addComponent(btnBack))
@@ -283,7 +255,6 @@ public class CorrectionData extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void setDataInVariables() {
-        id = UsingForJFrame.getIntFromGUI(txtID);
         name = UsingForJFrame.getDataFromGUI(txtName);
         martialState = UsingForJFrame.getDataFromGUI(txtmstate);
         adress = UsingForJFrame.getDataFromGUI(txtAdress);
@@ -297,14 +268,13 @@ public class CorrectionData extends javax.swing.JFrame {
     private boolean equalityOfData()
     {
         counterOfChanges = 0;
-        for(int i = 0 ; i < 7 ; i++)  changes[i] = 0;
-        if(id != Integer.parseInt(arrData[0])){counterOfChanges++; changes[0]=1;}
-        if(!name.equals(arrData[1]+" "+arrData[2] )){counterOfChanges++; changes[1]=1;}
-        if(!martialState.equals(arrData[3])){counterOfChanges++; changes[2]=1;}
-        if(!adress.equals(arrData[4])){counterOfChanges++; changes[3]=1;}
-        if(Mobno != Integer.parseInt(arrData[5])){counterOfChanges++; changes[4]=1;}
-        if(!sex.equals(arrData[6])){counterOfChanges++; changes[5]=1;}
-        if(age != Integer.parseInt(arrData[7])){counterOfChanges++; changes[6]=1;}
+        for(int i = 0 ; i < 5 ; i++)  changes[i] = 0;
+        if(!name.equals(arrData[0])){counterOfChanges++; changes[0]=1;}
+        if(!martialState.equals(arrData[1])){counterOfChanges++; changes[1]=1;}
+        if(!adress.equals(arrData[2])){counterOfChanges++; changes[2]=1;}
+        if(Mobno != Integer.parseInt(arrData[3])){counterOfChanges++; changes[3]=1;}
+        if(!sex.equals(arrData[4])){counterOfChanges++; changes[4]=1;}
+        if(age != Integer.parseInt(arrData[5])){counterOfChanges++; changes[5]=1;}
         if(counterOfChanges == 0) return true;
         else return false;
     }
@@ -315,7 +285,7 @@ public class CorrectionData extends javax.swing.JFrame {
 
     private void btnSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendActionPerformed
         setDataInVariables();
-        CorrectionData correctionData = new CorrectionData(userDataInClass);
+        CorrectionData correctionData = new CorrectionData(userDataInClass , ID);
         boolean cheaker = equalityOfData();
         if(cheaker){
             JOptionPane.showMessageDialog(null, "you doesnot edit any of the data please edit it and send it again ");
@@ -326,7 +296,7 @@ public class CorrectionData extends javax.swing.JFrame {
         {
             JOptionPane.showMessageDialog(null, "you change "+counterOfChanges+" fields successfully ");
             UserController userController = new UserController();
-            boolean upated = userController.updateRecords(Integer.parseInt(arrData[0]), name, age, martialState, adress, Mobno, sex);
+            boolean upated = userController.updateRecords(ID, name, age, martialState, adress, Mobno, sex);
             if (upated){JOptionPane.showMessageDialog(null, "Data Updated Successfully "); btnBackActionPerformed(evt);}
             else 
             {
@@ -386,9 +356,7 @@ public class CorrectionData extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -398,9 +366,7 @@ public class CorrectionData extends javax.swing.JFrame {
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField txtAdress;
     private javax.swing.JTextField txtAge;
-    private javax.swing.JTextField txtEMail;
     private javax.swing.JTextField txtGender;
-    private javax.swing.JTextField txtID;
     private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtNumber;
     private javax.swing.JTextField txtmstate;

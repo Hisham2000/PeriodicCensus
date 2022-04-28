@@ -35,7 +35,6 @@ public class UserDataBase {
     private static void setConnection() {
         try {
             connection = DriverManager.getConnection(setURL(), "root", "");
-            System.out.println("COnnection is done ");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "The Connection Has been faild");
         }
@@ -48,7 +47,7 @@ public class UserDataBase {
     public Boolean checkUsers(String userName, int password) {
         boolean checkUser;
         try {
-            String query = "SELECT U_SSN  ,FirstName FROM dataofuser WHERE U_SSN = " + password + " AND FirstName = '" + userName + "'";
+            String query = "SELECT U_SSN  ,Name FROM dataofuser WHERE U_SSN = " + password + " AND Name = '" + userName + "'";
             Statement statement = connection.createStatement();
             ResultSet reulsSet = statement.executeQuery(query);
             checkUser = reulsSet.next();
@@ -61,15 +60,14 @@ public class UserDataBase {
     public String searchByID(int Id) {
         String myOwnD = null;
         try {
-            String query = "SELECT U_SSN , FirstName , mirtalState , Address , mobileNO , sex , AGE FROM dataofuser WHERE U_SSN = " + Id;
+            String query = "SELECT Name , MaritalStatus , Address , MobileNum , Sex , Age FROM dataofuser WHERE U_SSN = " + Id;
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(query);
             while (resultSet.next()) {
-                myOwnD = resultSet.getInt("U_SSN") + " " + resultSet.getString("FirstName")
-                        + " ";
-                myOwnD += resultSet.getString("mirtalState") + " " + resultSet.getString("Address")
-                        + " " + resultSet.getInt("mobileNO");
-                myOwnD += " " + resultSet.getString("sex") + " " + resultSet.getInt("AGE");
+                myOwnD =  resultSet.getString("Name")+ " ";
+                myOwnD += resultSet.getString("MaritalStatus") + " " + resultSet.getString("Address")
+                        + " " + resultSet.getInt("MobileNum");
+                myOwnD += " " + resultSet.getString("Sex") + " " + resultSet.getInt("Age");
                 System.out.println(myOwnD);
             }
         } catch (Exception e) {
@@ -81,8 +79,8 @@ public class UserDataBase {
     public boolean update(int id, String name, String martialState, String adress, int mobNum, String sex, int age) {
         int recordUpdates = 0;
         try {
-            String query = "UPDATE dataofuser SET FirstName = ' " + name + " ', AGE = " + age + ", mirtalState = '" + martialState
-                    + "', Address = '" + adress + "', mobileNO = " + mobNum + ", sex = '" + sex + "' WHERE U_SSN = " + id;
+            String query = "UPDATE dataofuser SET Name = '" + name + "', AGE = " + age + ", MaritalStatus = '" + martialState
+                    + "', Address = '" + adress + "', MobileNum = " + mobNum + ", Sex = '" + sex + "' WHERE U_SSN = " + id;
             Statement statement = connection.createStatement();
             recordUpdates = statement.executeUpdate(query);
             if (recordUpdates != 0) {
@@ -97,11 +95,11 @@ public class UserDataBase {
     public int returnTheChickState(int id) {
         int chickState = -1;
         try {
-            String query = "SELECT checkState FROM dataofuser WHERE U_SSN = " + id;
+            String query = "SELECT CheckState FROM dataofuser WHERE U_SSN = " + id;
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(query);
             while (resultSet.next()) {
-                chickState = resultSet.getInt("checkState");
+                chickState = resultSet.getInt("CheckState");
                 System.out.println(chickState);
             }
             return chickState;
@@ -114,7 +112,7 @@ public class UserDataBase {
     {
         int numberOfChangingQuery=0;
         try {
-            String query = "INSERT INTO dataofuser VALUES ("+id+", '"+name+"', "+age+", '"+martialStatus+"', '"+adress+"', "+mobileNO+", '"+sex+"', 0, 456781";
+            String query = "INSERT INTO dataofuser VALUES ("+id+", '"+name+"', "+age+", '"+martialStatus+"', '"+adress+"', "+mobileNO+", '"+sex+"', 0, 456781)";
             System.out.println("After Insert statement");
             Statement statement = connection.createStatement();
             numberOfChangingQuery = statement.executeUpdate(query);

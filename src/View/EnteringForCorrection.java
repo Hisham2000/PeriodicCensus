@@ -142,7 +142,7 @@ public class EnteringForCorrection extends javax.swing.JFrame {
                 if (data == null) {
                     JOptionPane.showMessageDialog(null, "Please Enter a corrected Data :)");
                 } else {
-                    CorrectionData correctionData = new CorrectionData(data);
+                    CorrectionData correctionData = new CorrectionData(data, id);
                     UsingForJFrame.convertFromGUIToGUI(this, correctionData);
                     UsingForJFrame.closeThGUI(this);
                 }

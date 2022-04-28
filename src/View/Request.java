@@ -250,6 +250,7 @@ public class Request extends javax.swing.JFrame {
                 UserController userController = new UserController();
                 if(userController.insertData(id, name, age, martialState, adress, mobNum, sex))
                 {
+                    JOptionPane.showMessageDialog(null, "Your Data Succeffully sended");
                     ShowData showData = new ShowData(id, name, age, martialState, adress, mobNum, sex);
                     UsingForJFrame.convertFromGUIToGUI(this, showData);
                     UsingForJFrame.closeThGUI(this);
