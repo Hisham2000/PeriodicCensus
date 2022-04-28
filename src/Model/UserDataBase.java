@@ -68,7 +68,6 @@ public class UserDataBase {
                 myOwnD += resultSet.getString("MaritalStatus") + " " + resultSet.getString("Address")
                         + " " + resultSet.getInt("MobileNum");
                 myOwnD += " " + resultSet.getString("Sex") + " " + resultSet.getInt("Age");
-                System.out.println(myOwnD);
             }
         } catch (Exception e) {
             return myOwnD;
@@ -100,7 +99,6 @@ public class UserDataBase {
             ResultSet resultSet = statement.executeQuery(query);
             while (resultSet.next()) {
                 chickState = resultSet.getInt("CheckState");
-                System.out.println(chickState);
             }
             return chickState;
         } catch (Exception e) {
@@ -116,7 +114,6 @@ public class UserDataBase {
             System.out.println("After Insert statement");
             Statement statement = connection.createStatement();
             numberOfChangingQuery = statement.executeUpdate(query);
-            System.out.println(numberOfChangingQuery);
             if(numberOfChangingQuery !=0) return true;
         } catch (Exception e) {
             return false;
