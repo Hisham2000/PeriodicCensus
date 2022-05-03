@@ -5,7 +5,7 @@ import Model.UserDataBase;
 
 public class UserController {
     
-    UserDataBase userDataBase = UserDataBase.getInstance();
+    UserDataBase userDataBase = new UserDataBase();
     
     public boolean chickUserNameAndPassword(String name , int password)
     {
@@ -13,7 +13,7 @@ public class UserController {
         else return false;
     }
     
-    public String searchByIDForUser(int ID)
+    public  String searchByIDForUser(int ID)
     {
            String data = userDataBase.searchByID(ID);
            return data;

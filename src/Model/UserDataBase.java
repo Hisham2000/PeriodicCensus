@@ -1,49 +1,15 @@
 package Model;
 
+import Services.ConnectionToDataBase;
 import java.sql.*;
 import javax.swing.JOptionPane;
 
-public class UserDataBase {
-
-    private static UserDataBase instance = new UserDataBase();
-
-    public static UserDataBase getInstance() {
-        if (instance == null) {
-            instance = new UserDataBase();
-        }
-        return instance;
-    }
-
-    private UserDataBase() {
-        if (checkConnection() == null) {
-            setConnection();
-        }
-    }
-
-    private static Connection connection;
-
-    private static String setURL() {
-        String url = "jdbc:mysql://localhost:3306/PeriodicCensus"
-                + "?useUnicode=true&characterEncoding=UTF-8";
-        return url;
-    }
-
-    public static UserDataBase createDataBase() {
-        return new UserDataBase();
-    }
-
-    private static void setConnection() {
-        try {
-            connection = DriverManager.getConnection(setURL(), "root", "");
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "The Connection Has been faild");
-        }
-    }
-
-    private Connection checkConnection() {
-        return connection;
-    }
-
+public class UserDataBase {  
+    
+    ConnectionToDataBase connectionToDataBase = ConnectionToDataBase.getInstance();
+    
+    private Connection connection = connectionToDataBase.getConnection();
+    
     public Boolean checkUsers(String userName, int password) {
         boolean checkUser;
         try {
