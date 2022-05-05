@@ -77,7 +77,6 @@ public class UserDataBase {
         int numberOfChangingQuery=0;
         try {
             String query = "INSERT INTO dataofuser VALUES ("+id+", '"+name+"', "+age+", '"+martialStatus+"', '"+adress+"', "+mobileNO+", '"+sex+"', 0, 456781)";
-            System.out.println("After Insert statement");
             Statement statement = connection.createStatement();
             numberOfChangingQuery = statement.executeUpdate(query);
             if(numberOfChangingQuery !=0) return true;

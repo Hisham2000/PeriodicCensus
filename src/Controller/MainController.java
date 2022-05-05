@@ -4,17 +4,19 @@ package Controller;
 import View.LogIn;
 import View.OfficerLogIn;
 import Model.OfficerDataBase;
+import View.StartingPoint;
+import View.AdminContrllingOfficer;
 
 public class MainController {
     
     public static void main(String[] args) {
-//        LogIn logIn = new LogIn();
-//        logIn.setVisible(true);
-//        logIn.setLocationRelativeTo(null);
+//       StartingPoint startingPoint = new StartingPoint();
+//       startingPoint.setVisible(true);
+//       startingPoint.setLocationRelativeTo(null);
 
-        OfficerLogIn officerLogIn = new OfficerLogIn();
-        officerLogIn.setVisible(true);
-        officerLogIn.setLocationRelativeTo(null);
+        AdminContrllingOfficer adminContrllingOfficer = new AdminContrllingOfficer();
+        adminContrllingOfficer.setVisible(true);
+        adminContrllingOfficer.setLocationRelativeTo(null);
 
     }
     

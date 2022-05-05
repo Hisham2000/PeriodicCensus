@@ -11,8 +11,14 @@ public class ShowAllRequests extends javax.swing.JFrame {
     OfficerController officerController = new OfficerController();
     DefaultTableModel model;
 
+    
+
     public ShowAllRequests() {
         initComponents();
+        setDataInTabel();
+    }
+
+    private void setDataInTabel() {
         ArrayList<String> data = new ArrayList<String>();
         data = officerController.returnAllRequsets();
         this.model = (DefaultTableModel) table.getModel();
@@ -21,7 +27,7 @@ public class ShowAllRequests extends javax.swing.JFrame {
             model.addRow(mydata);
         }
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -138,22 +144,32 @@ public class ShowAllRequests extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
         UsingForJFrame.closeThGUI(this);
     }//GEN-LAST:event_btnExitActionPerformed
 
-    private void btnAcceptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcceptActionPerformed
+    private int returnIdForSelectedColumn() {
         int currentRow = table.getSelectedRow();
         int id = Integer.parseInt((String) model.getValueAt(currentRow, 0));
-        officerController.acceptUsers(id);
+        return id;
+    }
+
+    private void removeCurrentRow() {
+        int currentRow = table.getSelectedRow();
         model.removeRow(currentRow);
+    }
+
+    private void btnAcceptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcceptActionPerformed
+        int id = returnIdForSelectedColumn();
+        officerController.acceptUsers(id);
+        removeCurrentRow();
     }//GEN-LAST:event_btnAcceptActionPerformed
 
     private void btnRejectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRejectActionPerformed
-        int currentRow = table.getSelectedRow();
-        int id = Integer.parseInt((String) model.getValueAt(currentRow, 0));
+        int id = returnIdForSelectedColumn();
         officerController.rejectUsers(id);
-        model.removeRow(currentRow);
+        removeCurrentRow();
     }//GEN-LAST:event_btnRejectActionPerformed
 
     /**

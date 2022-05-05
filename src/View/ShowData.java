@@ -13,11 +13,15 @@ public class ShowData extends javax.swing.JFrame {
     public ShowData(int id, String name, int age, String martialState, String adress, int mobNum, String sex)
     {
         initComponents();
+        setDataInTable(id, name, age, martialState, adress, mobNum, sex);
+    }
+    
+    private void setDataInTable(int id, String name, int age, String martialState, String adress, int mobNum, String sex)
+    {
         DefaultTableModel model =(DefaultTableModel)table.getModel();
         Object mydata [] = {id, name, age, martialState, adress, "0"+mobNum, sex};
         model.addRow(mydata);
     }
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
