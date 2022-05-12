@@ -8,13 +8,13 @@ import javax.swing.JOptionPane;
 
 public class Request extends javax.swing.JFrame {
 
-    int id;
-    String name;
-    int age;
-    String martialState;
-    String adress;
-    int mobNum;
-    String sex;
+    private int id;
+    private String name;
+    private int age;
+    private String martialState;
+    private String adress;
+    private int mobNum;
+    private String sex;
 
     public Request() {
         initComponents();

@@ -8,7 +8,7 @@ import Services.UserTable;
 public class ShowAllRequests extends javax.swing.JFrame {
     private OfficerController officerController = new OfficerController();
     private DefaultTableModel model;
-    UserTable userTable = new UserTable();
+    private UserTable userTable = new UserTable();
 
     
 
