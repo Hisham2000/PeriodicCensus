@@ -9,12 +9,7 @@ public class OfficerController {
     
     public boolean chickUserNameAndPassword(String name , int password)
     {
-        return officerDataBase.checkUsers(name, password);
-    }
-    
-    public ArrayList<String> returnAllRequsets()
-    {
-        return officerDataBase.returnAllRequests();
+        return officerDataBase.chick(password, name);
     }
     
     public void acceptUsers(int id)
@@ -25,5 +20,25 @@ public class OfficerController {
     public void rejectUsers(int id)
     {
         officerDataBase.rejectUsers(id);
+    }
+    
+    public void deleteOfficerRecord(int O_SSN)
+    {
+        officerDataBase.delete(O_SSN);
+    }
+    
+    public void updateOfficers(ArrayList<String> data)
+    {
+        officerDataBase.update(data);
+    }
+    
+    public void insertOfficerData(ArrayList<String> data)
+    {
+        officerDataBase.insert(data);
+    }
+    
+    public ArrayList<String> retunAllOfficers( )
+    {
+        return officerDataBase.select();
     }
 }

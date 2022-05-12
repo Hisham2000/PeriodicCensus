@@ -4,14 +4,27 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/D:/SoftProject/JustMaybeFinish/src/View/StartingPoint.java</file>
+            <file>file:/D:/SoftProject/JustMaybeFinish/src/View/ShowAllRequests.java</file>
             <file>file:/D:/SoftProject/JustMaybeFinish/src/Controller/OfficerController.java</file>
+            <file>file:/D:/SoftProject/JustMaybeFinish/src/Model/AdminDataBase.java</file>
+            <file>file:/D:/SoftProject/JustMaybeFinish/src/Services/UsingForJFrame.java</file>
+            <file>file:/D:/SoftProject/JustMaybeFinish/src/Services/URL.java</file>
+            <file>file:/D:/SoftProject/JustMaybeFinish/src/Services/ConnectionToDataBase.java</file>
+            <file>file:/D:/SoftProject/JustMaybeFinish/src/View/OfficerLogIn.java</file>
             <file>file:/D:/SoftProject/JustMaybeFinish/src/Model/UserDataBase.java</file>
             <file>file:/D:/SoftProject/JustMaybeFinish/src/View/ShowData.java</file>
             <file>file:/D:/SoftProject/JustMaybeFinish/src/Controller/UserController.java</file>
+            <file>file:/D:/SoftProject/JustMaybeFinish/src/Services/iTable.java</file>
             <file>file:/D:/SoftProject/JustMaybeFinish/src/Controller/AdminContrller.java</file>
+            <file>file:/D:/SoftProject/JustMaybeFinish/src/View/EnteringForCorrection.java</file>
+            <file>file:/D:/SoftProject/JustMaybeFinish/src/Services/AdminTable.java</file>
+            <file>file:/D:/SoftProject/JustMaybeFinish/src/View/CorrectionData.java</file>
+            <file>file:/D:/SoftProject/JustMaybeFinish/src/Services/ConnectionUsage.java</file>
             <file>file:/D:/SoftProject/JustMaybeFinish/src/View/AdminContrllingOfficer.java</file>
-            <file>file:/D:/SoftProject/JustMaybeFinish/src/Services/UsingForJFrame.java</file>
+            <file>file:/D:/SoftProject/JustMaybeFinish/src/View/LogIn.java</file>
             <file>file:/D:/SoftProject/JustMaybeFinish/src/Model/OfficerDataBase.java</file>
+            <file>file:/D:/SoftProject/JustMaybeFinish/src/Services/ControllingTables.java</file>
+            <file>file:/D:/SoftProject/JustMaybeFinish/src/Services/UsingForTextFields.java</file>
             <file>file:/D:/SoftProject/JustMaybeFinish/src/Controller/MainController.java</file>
         </group>
     </open-files>

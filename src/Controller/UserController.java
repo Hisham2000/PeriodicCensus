@@ -2,6 +2,7 @@
 package Controller;
 
 import Model.UserDataBase;
+import java.util.ArrayList;
 
 public class UserController {
     
@@ -9,7 +10,7 @@ public class UserController {
     
     public boolean chickUserNameAndPassword(String name , int password)
     {
-        if(userDataBase.checkUsers(name, password)) return true;
+        if(userDataBase.chick(password, name)) return true;
         else return false;
     }
     
@@ -19,17 +20,22 @@ public class UserController {
            return data;
     }
     
-    public boolean updateRecords(int id, String name, int age, String martialState, String adredd, int mobNum, String sex)
+    public boolean updateRecords(ArrayList<String> data)
     {
-        return userDataBase.update(id, name, martialState, adredd, mobNum, sex, age);
+        return userDataBase.update(data);
     }
     
     public int chickState(int id)
     {
         return userDataBase.returnTheChickState(id);
     }
-    public boolean  insertData(int id, String name, int age, String martialStatus, String adress, int mobileNO, String sex)
+    public boolean  insertData(ArrayList<String> data)
     {
-        return userDataBase.insertData(id, name, age, martialStatus, adress, mobileNO, sex);
+        return userDataBase.insert(data);
+    }
+    
+    public ArrayList<String> returnAllRequsets()
+    {
+        return userDataBase.select();
     }
 }

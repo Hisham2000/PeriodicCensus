@@ -1,33 +1,22 @@
 package View;
 
 import Services.UsingForJFrame;
-import Services.UsingForTextFields;
 import javax.swing.table.DefaultTableModel;
 import Controller.OfficerController;
-import java.util.ArrayList;
+import Services.UserTable;
 
 public class ShowAllRequests extends javax.swing.JFrame {
-
-    OfficerController officerController = new OfficerController();
-    DefaultTableModel model;
+    private OfficerController officerController = new OfficerController();
+    private DefaultTableModel model;
+    UserTable userTable = new UserTable();
 
     
 
     public ShowAllRequests() {
         initComponents();
-        setDataInTabel();
+        userTable.setDataFromDataBase(table);
     }
 
-    private void setDataInTabel() {
-        ArrayList<String> data = new ArrayList<String>();
-        data = officerController.returnAllRequsets();
-        this.model = (DefaultTableModel) table.getModel();
-        for (int i = 0; i < data.size(); i++) {
-            Object mydata[] = data.get(i).split(" ");
-            model.addRow(mydata);
-        }
-    }
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -149,27 +138,16 @@ public class ShowAllRequests extends javax.swing.JFrame {
         UsingForJFrame.closeThGUI(this);
     }//GEN-LAST:event_btnExitActionPerformed
 
-    private int returnIdForSelectedColumn() {
-        int currentRow = table.getSelectedRow();
-        int id = Integer.parseInt((String) model.getValueAt(currentRow, 0));
-        return id;
-    }
-
-    private void removeCurrentRow() {
-        int currentRow = table.getSelectedRow();
-        model.removeRow(currentRow);
-    }
-
     private void btnAcceptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcceptActionPerformed
-        int id = returnIdForSelectedColumn();
+        int id = userTable.returnSelectionColumn(table);
         officerController.acceptUsers(id);
-        removeCurrentRow();
+        userTable.removeCurrentRow(table);
     }//GEN-LAST:event_btnAcceptActionPerformed
 
     private void btnRejectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRejectActionPerformed
-        int id = returnIdForSelectedColumn();
+        int id = userTable.returnSelectionColumn(table);
         officerController.rejectUsers(id);
-        removeCurrentRow();
+        userTable.removeCurrentRow(table);
     }//GEN-LAST:event_btnRejectActionPerformed
 
     /**

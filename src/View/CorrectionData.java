@@ -4,6 +4,7 @@ import Controller.UserController;
 import javax.swing.JOptionPane;
 import Services.UsingForJFrame;
 import Services.UsingForTextFields;
+import java.util.ArrayList;
 
 public class CorrectionData extends javax.swing.JFrame {
     int ID;
@@ -30,13 +31,7 @@ public class CorrectionData extends javax.swing.JFrame {
         ID = id;
         userDataInClass = userDataInClass.concat(data);
         arrData = data.split(" ");
-        UsingForTextFields.setDataInFields(txtName, arrData[0]);
-        UsingForTextFields.setDataInFields(txtmstate, arrData[1]);
-        UsingForTextFields.setDataInFields(txtAdress, arrData[2]);
-        UsingForTextFields.setDataInFields(txtNumber, arrData[3]);
-        UsingForTextFields.setDataInFields(txtGender, arrData[4]);
-        UsingForTextFields.setDataInFields(txtAge, arrData[5]);
-        
+       setDataINFrame();
     }
 
     @SuppressWarnings("unchecked")
@@ -254,6 +249,16 @@ public class CorrectionData extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void setDataINFrame()
+    {
+        UsingForTextFields.setDataInFields(txtName, arrData[0]);
+        UsingForTextFields.setDataInFields(txtmstate, arrData[1]);
+        UsingForTextFields.setDataInFields(txtAdress, arrData[2]);
+        UsingForTextFields.setDataInFields(txtNumber, arrData[3]);
+        UsingForTextFields.setDataInFields(txtGender, arrData[4]);
+        UsingForTextFields.setDataInFields(txtAge, arrData[5]);
+    }
+    
     private void setDataInVariables() {
         name = UsingForJFrame.getDataFromGUI(txtName);
         martialState = UsingForJFrame.getDataFromGUI(txtmstate);
@@ -278,13 +283,25 @@ public class CorrectionData extends javax.swing.JFrame {
         if(counterOfChanges == 0) return true;
         else return false;
     }
+    
+    private ArrayList<String> setDataIntoArrayList() {
+        ArrayList<String> myData = new ArrayList<>();
+        myData.add(Integer.toString(ID));
+        myData.add(name);
+        myData.add(Integer.toString(age));
+        myData.add(martialState);
+        myData.add(adress);
+        myData.add(Integer.toString(Mobno));
+        myData.add(sex);
+        return myData;
+    }
 
     private void BtnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnExitActionPerformed
         UsingForJFrame.closeThGUI(this);
     }//GEN-LAST:event_BtnExitActionPerformed
 
     private void btnSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendActionPerformed
-        setDataInVariables();
+        ArrayList<String> data = setDataIntoArrayList();
         CorrectionData correctionData = new CorrectionData(userDataInClass , ID);
         boolean cheaker = equalityOfData();
         if(cheaker){
@@ -296,7 +313,7 @@ public class CorrectionData extends javax.swing.JFrame {
         {
             JOptionPane.showMessageDialog(null, "you change "+counterOfChanges+" fields successfully ");
             UserController userController = new UserController();
-            boolean upated = userController.updateRecords(ID, name, age, martialState, adress, Mobno, sex);
+            boolean upated = userController.updateRecords(data);
             if (upated){JOptionPane.showMessageDialog(null, "Data Updated Successfully "); btnBackActionPerformed(evt);}
             else 
             {

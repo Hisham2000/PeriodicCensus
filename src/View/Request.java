@@ -1,14 +1,20 @@
-
 package View;
 
 import Controller.UserController;
 import Services.UsingForJFrame;
 import Services.UsingForTextFields;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 public class Request extends javax.swing.JFrame {
-    int id; String name; int age; String martialState;
-    String adress; int mobNum; String sex; 
+
+    int id;
+    String name;
+    int age;
+    String martialState;
+    String adress;
+    int mobNum;
+    String sex;
 
     public Request() {
         initComponents();
@@ -233,32 +239,8 @@ public class Request extends javax.swing.JFrame {
     private void BtnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnExitActionPerformed
         UsingForJFrame.closeThGUI(this);
     }//GEN-LAST:event_BtnExitActionPerformed
-    
-    
-    private void btnShowDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowDataActionPerformed
-        if(UsingForTextFields.chickEmpty(txtID) && UsingForTextFields.chickEmpty(txtName) && UsingForTextFields.chickEmpty(txtAge) && UsingForTextFields.chickEmpty(txtmstate) && UsingForTextFields.chickEmpty(txtAdress) && UsingForTextFields.chickEmpty(txtNumber) && UsingForTextFields.chickEmpty(txtGender))
-        {
-            name = UsingForJFrame.getDataFromGUI(txtName);
-            martialState = UsingForJFrame.getDataFromGUI(txtmstate);
-            adress = UsingForJFrame.getDataFromGUI(txtAdress);
-            sex = UsingForJFrame.getDataFromGUI(txtGender);
-            if(UsingForTextFields.chickInteger(txtID) && UsingForTextFields.chickInteger(txtAge) && UsingForTextFields.chickInteger(txtNumber))
-            {
-                id = UsingForJFrame.getIntFromGUI(txtID);
-                age = UsingForJFrame.getIntFromGUI(txtAge);
-                mobNum = UsingForJFrame.getIntFromGUI(txtNumber);
-                UserController userController = new UserController();
-                if(userController.insertData(id, name, age, martialState, adress, mobNum, sex))
-                {
-                    JOptionPane.showMessageDialog(null, "Your Data Succeffully sended");
-                    ShowData showData = new ShowData(id, name, age, martialState, adress, mobNum, sex);
-                    UsingForJFrame.convertFromGUIToGUI(this, showData);
-                    UsingForJFrame.closeThGUI(this);
-                }
-            }
-             else JOptionPane.showMessageDialog(null, "You Put String In An Integer Faild Please try again ");
-        }
-        else JOptionPane.showMessageDialog(null, "Dont Leave The Field Empty ");
+
+    private void clearing() {
         UsingForTextFields.clearText(txtID);
         UsingForTextFields.clearText(txtName);
         UsingForTextFields.clearText(txtAge);
@@ -267,12 +249,64 @@ public class Request extends javax.swing.JFrame {
         UsingForTextFields.clearText(txtGender);
         UsingForTextFields.clearText(txtNumber);
         UsingForTextFields.askForRequest(txtName);
+    }
+
+    private boolean chickEmpty() {
+        return UsingForTextFields.chickEmpty(txtID) && UsingForTextFields.chickEmpty(txtName) && UsingForTextFields.chickEmpty(txtAge) && UsingForTextFields.chickEmpty(txtmstate) && UsingForTextFields.chickEmpty(txtAdress) && UsingForTextFields.chickEmpty(txtNumber) && UsingForTextFields.chickEmpty(txtGender);
+    }
+
+    private boolean chickInt() {
+        return UsingForTextFields.chickInteger(txtID) && UsingForTextFields.chickInteger(txtAge) && UsingForTextFields.chickInteger(txtNumber);
+    }
+
+    private ArrayList<String> setDataIntoArrayList() {
+        ArrayList<String> myData = new ArrayList<>();
+        myData.add(Integer.toString(id));
+        myData.add(name);
+        myData.add(Integer.toString(age));
+        myData.add(martialState);
+        myData.add(adress);
+        myData.add(Integer.toString(mobNum));
+        myData.add(sex);
+        return myData;
+    }
+
+    private void setDataInVariables() {
+        name = UsingForJFrame.getDataFromGUI(txtName);
+        martialState = UsingForJFrame.getDataFromGUI(txtmstate);
+        adress = UsingForJFrame.getDataFromGUI(txtAdress);
+        sex = UsingForJFrame.getDataFromGUI(txtGender);
+        id = UsingForJFrame.getIntFromGUI(txtID);
+        age = UsingForJFrame.getIntFromGUI(txtAge);
+        mobNum = UsingForJFrame.getIntFromGUI(txtNumber);
+    }
+
+    private void btnShowDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowDataActionPerformed
+        if (chickEmpty()) {
+            if (chickInt()) {
+                setDataInVariables();
+                UserController userController = new UserController();
+                ArrayList<String> data = new ArrayList<>();
+                data = setDataIntoArrayList();
+                if (userController.insertData(data)) {
+                    JOptionPane.showMessageDialog(null, "Your Data Succeffully sended");
+                    ShowData showData = new ShowData(data);
+                    UsingForJFrame.convertFromGUIToGUI(this, showData);
+                    UsingForJFrame.closeThGUI(this);
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "You Put String In An Integer Faild Please try again ");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Dont Leave The Field Empty ");
+        }
+        clearing();
     }//GEN-LAST:event_btnShowDataActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-       Home home = new Home();
-       UsingForJFrame.convertFromGUIToGUI(this, home);
-       UsingForJFrame.closeThGUI(this);
+        Home home = new Home();
+        UsingForJFrame.convertFromGUIToGUI(this, home);
+        UsingForJFrame.closeThGUI(this);
     }//GEN-LAST:event_btnBackActionPerformed
 
     /**

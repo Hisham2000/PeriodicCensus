@@ -2,26 +2,14 @@ package Model;
 
 import Services.ConnectionToDataBase;
 import java.sql.*;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
-public class UserDataBase {  
+public class UserDataBase implements iDatabase{  
     
     ConnectionToDataBase connectionToDataBase = ConnectionToDataBase.getInstance();
     
     private Connection connection = connectionToDataBase.getConnection();
-    
-    public Boolean checkUsers(String userName, int password) {
-        boolean checkUser;
-        try {
-            String query = "SELECT U_SSN  ,Name FROM dataofuser WHERE U_SSN = " + password + " AND Name = '" + userName + "'";
-            Statement statement = connection.createStatement();
-            ResultSet reulsSet = statement.executeQuery(query);
-            checkUser = reulsSet.next();
-        } catch (Exception e) {
-            checkUser = false;
-        }
-        return checkUser;
-    }
 
     public String searchByID(int Id) {
         String myOwnD = null;
@@ -41,22 +29,6 @@ public class UserDataBase {
         return myOwnD;
     }
 
-    public boolean update(int id, String name, String martialState, String adress, int mobNum, String sex, int age) {
-        int recordUpdates = 0;
-        try {
-            String query = "UPDATE dataofuser SET Name = '" + name + "', AGE = " + age + ", MaritalStatus = '" + martialState
-                    + "', Address = '" + adress + "', MobileNum = " + mobNum + ", Sex = '" + sex + "' WHERE U_SSN = " + id;
-            Statement statement = connection.createStatement();
-            recordUpdates = statement.executeUpdate(query);
-            if (recordUpdates != 0) {
-                return true;
-            }
-        } catch (Exception e) {
-            return false;
-        }
-        return false;
-    }
-
     public int returnTheChickState(int id) {
         int chickState = -1;
         try {
@@ -72,11 +44,50 @@ public class UserDataBase {
         }
     }
     
-    public boolean insertData(int id ,String name, int age, String martialStatus, String adress, int mobileNO,String sex)
-    {
+
+    @Override
+    public boolean chick(int id, String Name) {
+        boolean checkUser;
+        try {
+            String query = "SELECT U_SSN  ,Name FROM dataofuser WHERE U_SSN = " + id + " AND Name = '" + Name + "'";
+            Statement statement = connection.createStatement();
+            ResultSet reulsSet = statement.executeQuery(query);
+            checkUser = reulsSet.next();
+        } catch (Exception e) {
+            checkUser = false;
+        }
+        return checkUser;
+    }
+
+    @Override
+    public ArrayList<String> select() {
+        ArrayList<String> requestedData = new ArrayList<String>();
+        try {
+            String query = "SELECT * FROM `dataofuser` WHERE CheckState = 0;";
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(query);
+            while(resultSet.next())
+            {
+                String data = String.valueOf(resultSet.getInt("U_SSN"))+ " ";
+                data += resultSet.getString("Name") + " ";
+                data += resultSet.getInt("Age")+ " ";
+                data += resultSet.getString("MaritalStatus")+ " ";
+                data += resultSet.getString("Address")+ " ";
+                data += resultSet.getInt("MobileNum")+ " ";
+                data += resultSet.getString("Sex")+ " ";
+                requestedData.add(data);
+                data = "";
+            }
+            return requestedData;
+        } catch (Exception e) {
+            return null;
+        }    }
+
+    @Override
+    public boolean insert(ArrayList<String> data) {
         int numberOfChangingQuery=0;
         try {
-            String query = "INSERT INTO dataofuser VALUES ("+id+", '"+name+"', "+age+", '"+martialStatus+"', '"+adress+"', "+mobileNO+", '"+sex+"', 0, 456781)";
+            String query = "INSERT INTO dataofuser VALUES ("+Integer.parseInt(data.get(0))+", '"+data.get(1)+"', "+Integer.parseInt(data.get(2))+", '"+data.get(3)+"', '"+data.get(4)+"', "+Integer.parseInt(data.get(5))+", '"+data.get(6)+"', 0, 456781)";
             Statement statement = connection.createStatement();
             numberOfChangingQuery = statement.executeUpdate(query);
             if(numberOfChangingQuery !=0) return true;
@@ -84,6 +95,28 @@ public class UserDataBase {
             return false;
         }
         return false;
+    }
+
+    @Override
+    public boolean update(ArrayList<String> data) {
+        int recordUpdates = 0;
+        try {
+            String query = "UPDATE dataofuser SET Name = '" + data.get(1) + "', AGE = " + Integer.parseInt(data.get(2)) + ", MaritalStatus = '" + data.get(3)
+                    + "', Address = '" + data.get(4) + "', MobileNum = " + Integer.parseInt(data.get(5)) + ", Sex = '" + data.get(6) + "' WHERE U_SSN = " + Integer.parseInt(data.get(0));
+            Statement statement = connection.createStatement();
+            recordUpdates = statement.executeUpdate(query);
+            if (recordUpdates != 0) {
+                return true;
+            }
+        } catch (Exception e) {
+            return false;
+        }
+        return false;
+    }
+
+    @Override
+    public void delete(int id) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
 }

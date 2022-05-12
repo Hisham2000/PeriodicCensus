@@ -1,27 +1,25 @@
 
 package View;
 
-import javax.swing.table.DefaultTableModel;
 import Services.UsingForJFrame;
+import Services.UserTable;
+import java.util.ArrayList;
 
 public class ShowData extends javax.swing.JFrame {
 
+    private  UserTable userTable; 
+    
     public ShowData() {
         initComponents();
     }
     
-    public ShowData(int id, String name, int age, String martialState, String adress, int mobNum, String sex)
+    public ShowData(ArrayList<String> data)
     {
         initComponents();
-        setDataInTable(id, name, age, martialState, adress, mobNum, sex);
+        userTable = new UserTable();
+        userTable.setDataInTables(table, data);
     }
-    
-    private void setDataInTable(int id, String name, int age, String martialState, String adress, int mobNum, String sex)
-    {
-        DefaultTableModel model =(DefaultTableModel)table.getModel();
-        Object mydata [] = {id, name, age, martialState, adress, "0"+mobNum, sex};
-        model.addRow(mydata);
-    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
