@@ -1,11 +1,19 @@
 package View;
 
-import Services.UsingForJFrame;
-
+import Services.ServiceOnJframe;
+import Services.ServiceTextField;
+import Services.UsingForTextFields;
 public class StartingPoint extends javax.swing.JFrame {
+    
+    ServiceOnJframe serviceOnJframe;
     
     public StartingPoint() {
         initComponents();
+    }
+    
+    public StartingPoint(ServiceOnJframe serviceOnJframe) {
+        initComponents();
+        this.serviceOnJframe = serviceOnJframe;
     }
     
     @SuppressWarnings("unchecked")
@@ -82,15 +90,17 @@ public class StartingPoint extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnOfficerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOfficerActionPerformed
-        OfficerLogIn officerLogIn = new OfficerLogIn();
-        UsingForJFrame.convertFromGUIToGUI(this, officerLogIn);
-        UsingForJFrame.closeThGUI(this);
+        ServiceTextField serviceTextField = new UsingForTextFields();
+        OfficerLogIn officerLogIn = new OfficerLogIn(this.serviceOnJframe, serviceTextField);
+        this.serviceOnJframe.convertFromGUIToGUI(this, officerLogIn);
+        this.serviceOnJframe.closeThGUI(this);
     }//GEN-LAST:event_btnOfficerActionPerformed
 
     private void btnUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUserActionPerformed
-        LogIn logIn = new LogIn();
-        UsingForJFrame.convertFromGUIToGUI(this, logIn);
-        UsingForJFrame.closeThGUI(this);
+        ServiceTextField serviceTextField = new UsingForTextFields();
+        LogIn logIn = new LogIn(this.serviceOnJframe, serviceTextField);
+        this.serviceOnJframe.convertFromGUIToGUI(this, logIn);
+        this.serviceOnJframe.closeThGUI(this);
     }//GEN-LAST:event_btnUserActionPerformed
 
     /**

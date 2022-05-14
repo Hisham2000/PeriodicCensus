@@ -9,7 +9,6 @@ public class UserController {
     
     UserDataBase userDataBase = new UserDataBase();
     
-    
     public boolean chickUserNameAndPassword(String name , int password)
     {
         if(userDataBase.chick(password, name)) return true;

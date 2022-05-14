@@ -3,15 +3,15 @@ package Services;
 
 import javax.swing.JTextField;
 
-public class UsingForTextFields {
+public class UsingForTextFields implements ServiceTextField{
     
-    public static boolean chickEmpty(JTextField jTextField)
+    public boolean chickEmpty(JTextField jTextField)
     {
         if(jTextField.getText().isEmpty()) return false;
         else return true;
     }
     
-    public static boolean chickInteger(JTextField jTextField)
+    public boolean chickInteger(JTextField jTextField)
     {
         String data = jTextField.getText();
         try{
@@ -22,17 +22,17 @@ public class UsingForTextFields {
         }
     }
     
-    public static void clearText(JTextField jTextField)
+    public void clearText(JTextField jTextField)
     {
         jTextField.setText("");
     }
     
-    public static void askForRequest(JTextField textField)
+    public void askForRequest(JTextField textField)
     {
         textField.requestFocus();
     }
     
-    public static void setDataInFields(JTextField jTextField, String data) {
+    public void setDataInFields(JTextField jTextField, String data) {
         jTextField.setText(data);
     }
 }

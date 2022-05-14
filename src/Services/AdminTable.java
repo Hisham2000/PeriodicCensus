@@ -5,7 +5,7 @@ import Controller.OfficerController;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-public class AdminTable implements iTable {
+public class AdminTable implements ServiceTable {
 
     @Override
     public void setDataFromDataBase (JTable jTable) {

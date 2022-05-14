@@ -1,6 +1,6 @@
 package View;
 
-import Services.UsingForJFrame;
+import Services.ServiceOnJframe;
 import javax.swing.table.DefaultTableModel;
 import Controller.OfficerController;
 import Services.UserTable;
@@ -9,11 +9,17 @@ public class ShowAllRequests extends javax.swing.JFrame {
     private OfficerController officerController = new OfficerController();
     private DefaultTableModel model;
     private UserTable userTable = new UserTable();
-
+    private ServiceOnJframe serviceOnJframe;
     
 
     public ShowAllRequests() {
         initComponents();
+        userTable.setDataFromDataBase(table);
+    }
+    
+    public ShowAllRequests(ServiceOnJframe serviceOnJframe) {
+        initComponents();
+        this.serviceOnJframe = serviceOnJframe;
         userTable.setDataFromDataBase(table);
     }
 
@@ -135,7 +141,7 @@ public class ShowAllRequests extends javax.swing.JFrame {
 
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
-        UsingForJFrame.closeThGUI(this);
+        this.serviceOnJframe.closeThGUI(this);
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void btnAcceptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcceptActionPerformed

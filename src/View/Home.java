@@ -1,11 +1,20 @@
 package View;
 
-import Services.UsingForJFrame;
+import Services.ServiceOnJframe;
+import Services.ServiceTextField;
+import Services.UsingForTextFields;
 
 public class Home extends javax.swing.JFrame {
 
+    private ServiceOnJframe serviceOnJframe;
+    
     public Home() {
         initComponents();
+    }
+    
+    public Home(ServiceOnJframe serviceOnJframe) {
+        initComponents();
+        this.serviceOnJframe = serviceOnJframe;
     }
 
     @SuppressWarnings("unchecked")
@@ -187,27 +196,29 @@ public class Home extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
-        UsingForJFrame.closeThGUI(this);
+        this.serviceOnJframe.closeThGUI(this);
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void btnSendRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendRequestActionPerformed
-        Request request = new Request();
-        UsingForJFrame.convertFromGUIToGUI(this, request);
-        UsingForJFrame.closeThGUI(this);
+        ServiceTextField serviceTextField = new UsingForTextFields();
+        Request request = new Request(this.serviceOnJframe, serviceTextField);
+        this.serviceOnJframe.convertFromGUIToGUI(this, request);
+        this.serviceOnJframe.closeThGUI(this);
     }//GEN-LAST:event_btnSendRequestActionPerformed
 
     private void btnCorrectionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCorrectionActionPerformed
-
-        EnteringForCorrection enteringForCorrection = new EnteringForCorrection();
-        UsingForJFrame.convertFromGUIToGUI(this, enteringForCorrection);
-        UsingForJFrame.closeThGUI(this);
+        ServiceTextField serviceTextField = new UsingForTextFields();
+        EnteringForCorrection enteringForCorrection = new EnteringForCorrection(this.serviceOnJframe, serviceTextField);
+        this.serviceOnJframe.convertFromGUIToGUI(this, enteringForCorrection);
+        this.serviceOnJframe.closeThGUI(this);
 
      }//GEN-LAST:event_btnCorrectionActionPerformed
 
     private void btnResultOfRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResultOfRequestActionPerformed
-        EnterYourID enterYourID = new EnterYourID();
-        UsingForJFrame.convertFromGUIToGUI(this, enterYourID);
-        UsingForJFrame.closeThGUI(this);
+        ServiceTextField serviceTextField = new UsingForTextFields();
+        EnterYourID enterYourID = new EnterYourID(this.serviceOnJframe, serviceTextField);
+        this.serviceOnJframe.convertFromGUIToGUI(this, enterYourID);
+        this.serviceOnJframe.closeThGUI(this);
     }//GEN-LAST:event_btnResultOfRequestActionPerformed
 
     /**

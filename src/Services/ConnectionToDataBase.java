@@ -5,7 +5,7 @@ import java.sql.*;
 
 public class ConnectionToDataBase {
     private static ConnectionToDataBase instance = new ConnectionToDataBase();
-    private final ConnectionUsage connectionUsage = new ConnectionUsage();
+    private ConnectionUsage connectionUsage = new ConnectionUsage();
     
     
     public static ConnectionToDataBase getInstance() {

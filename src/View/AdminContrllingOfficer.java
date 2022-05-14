@@ -10,6 +10,8 @@ public class AdminContrllingOfficer extends javax.swing.JFrame {
     private OfficerController officerController = new OfficerController();
     private AdminTable adminTable;
     private DefaultTableModel model ;
+    private ServiceOnJframe serviceOnJframe;
+    private ServiceTextField serviceTextField;
 
     private int O_SSN;
     private String name;
@@ -17,9 +19,15 @@ public class AdminContrllingOfficer extends javax.swing.JFrame {
     
     public AdminContrllingOfficer() {
         initComponents();
+    }
+    
+    public AdminContrllingOfficer(ServiceOnJframe serviceOnJframe,ServiceTextField serviceTextField) {
+        initComponents();
+        this.serviceOnJframe = serviceOnJframe;
+        this.serviceTextField = serviceTextField;
         adminTable = new AdminTable();
         adminTable.setDataFromDataBase(table);
-        UsingForTextFields.askForRequest(txtO_SSN);
+        this.serviceTextField.askForRequest(txtO_SSN);
     }
 
     @SuppressWarnings("unchecked")
@@ -197,7 +205,7 @@ public class AdminContrllingOfficer extends javax.swing.JFrame {
 
     private boolean chickEmpty() {
         boolean cheaker;
-        if (UsingForTextFields.chickEmpty(txtArea) && UsingForTextFields.chickEmpty(txtName) && UsingForTextFields.chickEmpty(txtO_SSN)) {
+        if (this.serviceTextField.chickEmpty(txtArea) && this.serviceTextField.chickEmpty(txtName) && this.serviceTextField.chickEmpty(txtO_SSN)) {
             return false;
         } else {
             return true;
@@ -205,9 +213,9 @@ public class AdminContrllingOfficer extends javax.swing.JFrame {
     }
 
     private void setDataInVariables() {
-        O_SSN = UsingForJFrame.getIntFromGUI(txtO_SSN);
-        name = UsingForJFrame.getDataFromGUI(txtName);
-        area = UsingForJFrame.getDataFromGUI(txtArea);
+        O_SSN = this.serviceOnJframe.getIntFromGUI(txtO_SSN);
+        name = this.serviceOnJframe.getDataFromGUI(txtName);
+        area = this.serviceOnJframe.getDataFromGUI(txtArea);
     }
     
     private ArrayList<String> SetDataInArrayList()
@@ -224,12 +232,12 @@ public class AdminContrllingOfficer extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNameActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        UsingForJFrame.closeThGUI(this);
+        this.serviceOnJframe.closeThGUI(this);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         if (!chickEmpty()) {
-            if (UsingForTextFields.chickInteger(txtO_SSN)) {
+            if (this.serviceTextField.chickInteger(txtO_SSN)) {
                 setDataInVariables();
                 ArrayList<String> data = SetDataInArrayList();
                 officerController.insertOfficerData(data);
@@ -241,17 +249,17 @@ public class AdminContrllingOfficer extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(null, "You should fill all fields please try again");
         }
-        AdminContrllingOfficer adminContrllingOfficer = new AdminContrllingOfficer();
-        UsingForJFrame.convertFromGUIToGUI(this, adminContrllingOfficer);
-        UsingForJFrame.closeThGUI(this);
+        AdminContrllingOfficer adminContrllingOfficer = new AdminContrllingOfficer(this.serviceOnJframe, this.serviceTextField);
+        this.serviceOnJframe.convertFromGUIToGUI(this, adminContrllingOfficer);
+        this.serviceOnJframe.closeThGUI(this);
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void getDataFromCurrentRow() {
         model = (DefaultTableModel)table.getModel();
         int Current = table.getSelectedRow();
         O_SSN = Integer.parseInt(model.getValueAt(Current,0).toString());
-        name = UsingForJFrame.getDataFromGUI(txtName);
-        area = UsingForJFrame.getDataFromGUI(txtArea);
+        name = this.serviceOnJframe.getDataFromGUI(txtName);
+        area = this.serviceOnJframe.getDataFromGUI(txtArea);
     }
     
     private boolean ChickNoChangeInO_SSN() {
@@ -265,24 +273,24 @@ public class AdminContrllingOfficer extends javax.swing.JFrame {
     
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
-        if (!UsingForTextFields.chickEmpty(txtO_SSN)) {
+        if (!this.serviceTextField.chickEmpty(txtO_SSN)) {
             getDataFromCurrentRow();
             ArrayList<String> data = SetDataInArrayList();
             officerController.updateOfficers(data);
             JOptionPane.showMessageDialog(null, "YOur data Have Been Edited Successfully :)");
         }
         else JOptionPane.showMessageDialog(null, "You shold let the O_SSN Filled Empty");
-        AdminContrllingOfficer adminContrllingOfficer = new AdminContrllingOfficer();
-        UsingForJFrame.convertFromGUIToGUI(this, adminContrllingOfficer);
-        UsingForJFrame.closeThGUI(this);
+        AdminContrllingOfficer adminContrllingOfficer = new AdminContrllingOfficer(this.serviceOnJframe, this.serviceTextField);
+        this.serviceOnJframe.convertFromGUIToGUI(this, adminContrllingOfficer);
+        this.serviceOnJframe.closeThGUI(this);
     }//GEN-LAST:event_btnEditActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         getDataFromCurrentRow();
         officerController.deleteOfficerRecord(O_SSN);
-        AdminContrllingOfficer adminContrllingOfficer = new AdminContrllingOfficer();
-        UsingForJFrame.convertFromGUIToGUI(this, adminContrllingOfficer);
-        UsingForJFrame.closeThGUI(this);
+        AdminContrllingOfficer adminContrllingOfficer = new AdminContrllingOfficer(this.serviceOnJframe, this.serviceTextField);
+        this.serviceOnJframe.convertFromGUIToGUI(this, adminContrllingOfficer);
+        this.serviceOnJframe.closeThGUI(this);
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     public static void main(String args[]) {

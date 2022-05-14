@@ -6,10 +6,9 @@ import java.util.ArrayList;
 
 public class OfficerDataBase implements iOfficerDataBase {
 
-    private ConnectionToDataBase connectionToDataBase = ConnectionToDataBase.getInstance();
+    ConnectionToDataBase connectionToDataBase = ConnectionToDataBase.getInstance();
     private Connection connection = connectionToDataBase.getConnection();
-    
-    @Override
+
     public void acceptUser(int id) {
         try {
             String query = "UPDATE dataofuser SET CheckState = 1 WHERE U_SSN = " + id;
@@ -19,7 +18,6 @@ public class OfficerDataBase implements iOfficerDataBase {
         }
     }
 
-    @Override
     public void rejectUsers(int id) {
         try {
             String query = "UPDATE dataofuser SET CheckState = 2 WHERE U_SSN = " + id;

@@ -1,21 +1,23 @@
 
 package View;
 
-import Services.UsingForJFrame;
+import Services.ServiceOnJframe;
 import Services.UserTable;
 import java.util.ArrayList;
 
 public class ShowData extends javax.swing.JFrame {
 
     private  UserTable userTable; 
+    private ServiceOnJframe serviceOnJframe;
     
     public ShowData() {
         initComponents();
     }
     
-    public ShowData(ArrayList<String> data)
+    public ShowData(ArrayList<String> data, ServiceOnJframe serviceOnJframe)
     {
         initComponents();
+        this.serviceOnJframe = serviceOnJframe;
         userTable = new UserTable();
         userTable.setDataInTables(table, data);
     }
@@ -132,13 +134,13 @@ public class ShowData extends javax.swing.JFrame {
     
     
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        Home home = new Home();   
-        UsingForJFrame.convertFromGUIToGUI(this, home);
-        UsingForJFrame.closeThGUI(this);
+        Home home = new Home(this.serviceOnJframe);   
+        this.serviceOnJframe .convertFromGUIToGUI(this, home);
+        this.serviceOnJframe .closeThGUI(this);
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        UsingForJFrame.closeThGUI(this);
+        this.serviceOnJframe.closeThGUI(this);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

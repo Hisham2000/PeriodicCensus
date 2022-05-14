@@ -1,15 +1,25 @@
 package View;
 
 import Controller.UserController;
-import Services.UsingForJFrame;
 import Services.UsingForTextFields;
 import javax.swing.JOptionPane;
+import Services.ServiceOnJframe;
+import Services.ServiceTextField;
 
 public class EnteringForCorrection extends javax.swing.JFrame {
-
+    
+    private ServiceOnJframe serviceOnJframe;
+    private ServiceTextField serviceTextField;
+    
     public EnteringForCorrection() {
         initComponents();
-        UsingForTextFields.askForRequest(txtID);
+    }
+    
+    public EnteringForCorrection(ServiceOnJframe serviceOnJframe, ServiceTextField serviceTextField) {
+        initComponents();
+        this.serviceOnJframe = serviceOnJframe;
+        this.serviceTextField = serviceTextField;
+        this.serviceTextField.askForRequest(txtID);
     }
 
     @SuppressWarnings("unchecked")
@@ -129,11 +139,11 @@ public class EnteringForCorrection extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
-        UsingForJFrame.closeThGUI(this);
+        this.serviceOnJframe.closeThGUI(this);
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void btnSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendActionPerformed
-        String inputId = UsingForJFrame.getDataFromGUI(txtID);
+        String inputId = this.serviceOnJframe.getDataFromGUI(txtID);
         if (!inputId.isEmpty()) {
             try {
                 int id = Integer.parseInt(inputId);
@@ -142,9 +152,9 @@ public class EnteringForCorrection extends javax.swing.JFrame {
                 if (data == null) {
                     JOptionPane.showMessageDialog(null, "Please Enter a corrected Data :)");
                 } else {
-                    CorrectionData correctionData = new CorrectionData(data, id);
-                    UsingForJFrame.convertFromGUIToGUI(this, correctionData);
-                    UsingForJFrame.closeThGUI(this);
+                    CorrectionData correctionData = new CorrectionData(data, id, this.serviceOnJframe, this.serviceTextField);
+                    this.serviceOnJframe.convertFromGUIToGUI(this, correctionData);
+                    this.serviceOnJframe.closeThGUI(this);
                 }
             } catch (NumberFormatException e) {
                 JOptionPane.showMessageDialog(null, "Please Enter An Integer Value");
@@ -154,9 +164,9 @@ public class EnteringForCorrection extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSendActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        Home home = new Home();
-        UsingForJFrame.convertFromGUIToGUI(this, home);
-        UsingForJFrame.closeThGUI(this);
+        Home home = new Home(this.serviceOnJframe);
+        this.serviceOnJframe.convertFromGUIToGUI(this, home);
+        this.serviceOnJframe.closeThGUI(this);
     }//GEN-LAST:event_btnBackActionPerformed
 
     /**

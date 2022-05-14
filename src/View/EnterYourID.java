@@ -3,13 +3,23 @@ package View;
 
 import Controller.UserController;
 import javax.swing.JOptionPane;
-import Services.UsingForJFrame;
 import Services.UsingForTextFields;
+import Services.ServiceOnJframe;
+import Services.ServiceTextField;
 
 public class EnterYourID extends javax.swing.JFrame {
 
+    private ServiceOnJframe serviceOnJframe;
+    private ServiceTextField serviceTextField;
+    
     public EnterYourID() {
         initComponents();
+    }
+    
+    public EnterYourID(ServiceOnJframe serviceOnJframe, ServiceTextField serviceTextField) {
+        initComponents();
+        this.serviceOnJframe = serviceOnJframe;
+        this.serviceTextField = serviceTextField;
     }
 
     @SuppressWarnings("unchecked")
@@ -129,13 +139,13 @@ public class EnterYourID extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
-        UsingForJFrame.closeThGUI(this);
+        this.serviceOnJframe.closeThGUI(this);
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void btnSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendActionPerformed
-        if(UsingForTextFields.chickEmpty(txtID))
+        if(this.serviceTextField.chickEmpty(txtID))
         {
-            if(UsingForTextFields.chickInteger(txtID))
+            if(this.serviceTextField.chickInteger(txtID))
             {
                 UserController userController =new UserController();
                 int chickState = userController.chickState(Integer.parseInt(txtID.getText()));
@@ -150,13 +160,13 @@ public class EnterYourID extends javax.swing.JFrame {
             }
         }
         else    JOptionPane.showMessageDialog(null, "you Enter an Empty Field Please Enter it :)");
-        UsingForTextFields.clearText(txtID);
+        this.serviceTextField.clearText(txtID);
     }//GEN-LAST:event_btnSendActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        Home home = new Home();
-        UsingForJFrame.convertFromGUIToGUI(this, home);
-        UsingForJFrame.closeThGUI(this);
+        Home home = new Home(this.serviceOnJframe);
+        this.serviceOnJframe.convertFromGUIToGUI(this, home);
+        this.serviceOnJframe.closeThGUI(this);
     }//GEN-LAST:event_btnBackActionPerformed
 
     /**
