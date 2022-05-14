@@ -2,11 +2,13 @@
 package Controller;
 
 import Model.UserDataBase;
+import Model.iDatabase;
 import java.util.ArrayList;
 
 public class UserController {
     
     UserDataBase userDataBase = new UserDataBase();
+    
     
     public boolean chickUserNameAndPassword(String name , int password)
     {
@@ -29,6 +31,7 @@ public class UserController {
     {
         return userDataBase.returnTheChickState(id);
     }
+    
     public boolean  insertData(ArrayList<String> data)
     {
         return userDataBase.insert(data);

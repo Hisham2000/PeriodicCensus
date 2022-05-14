@@ -3,14 +3,14 @@ package Model;
 import Services.ConnectionToDataBase;
 import java.sql.*;
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
 
-public class UserDataBase implements iDatabase{  
+public class UserDataBase implements iUserDataBase{  
     
     ConnectionToDataBase connectionToDataBase = ConnectionToDataBase.getInstance();
     
     private Connection connection = connectionToDataBase.getConnection();
-
+    
+    @Override
     public String searchByID(int Id) {
         String myOwnD = null;
         try {
@@ -29,6 +29,7 @@ public class UserDataBase implements iDatabase{
         return myOwnD;
     }
 
+    @Override
     public int returnTheChickState(int id) {
         int chickState = -1;
         try {
@@ -113,10 +114,5 @@ public class UserDataBase implements iDatabase{
         }
         return false;
     }
-
-    @Override
-    public void delete(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
+    
 }

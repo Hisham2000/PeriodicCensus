@@ -4,11 +4,12 @@ import Services.ConnectionToDataBase;
 import java.sql.*;
 import java.util.ArrayList;
 
-public class OfficerDataBase implements iDatabase {
+public class OfficerDataBase implements iOfficerDataBase {
 
     private ConnectionToDataBase connectionToDataBase = ConnectionToDataBase.getInstance();
     private Connection connection = connectionToDataBase.getConnection();
-
+    
+    @Override
     public void acceptUser(int id) {
         try {
             String query = "UPDATE dataofuser SET CheckState = 1 WHERE U_SSN = " + id;
@@ -18,6 +19,7 @@ public class OfficerDataBase implements iDatabase {
         }
     }
 
+    @Override
     public void rejectUsers(int id) {
         try {
             String query = "UPDATE dataofuser SET CheckState = 2 WHERE U_SSN = " + id;
@@ -64,14 +66,14 @@ public class OfficerDataBase implements iDatabase {
     @Override
     public boolean insert(ArrayList<String> data) {
         int numberOfChanginfgOfficers = 0;
-        int numberOfChangeingUsers = 0;
+        int numberOfChangeingArea = 0;
         try {
-            String queryOfficer = "INSERT INTO dataofofficer VALUES (" + Integer.parseInt(data.get(0)) + ", '" + data.get(1) + "', 123456789";
+            String queryOfficer = "INSERT INTO dataofofficer VALUES (" + Integer.parseInt(data.get(0)) + ", '" + data.get(1) + "', 123456789)";
             String queryArea = "INSERT INTO area VALUES (" + Integer.parseInt(data.get(0)) + ", '" + data.get(2) + "')";
             Statement statement = connection.createStatement();
             numberOfChanginfgOfficers = statement.executeUpdate(queryOfficer);
-            numberOfChanginfgOfficers = statement.executeUpdate(queryArea);
-            if (numberOfChangeingUsers != 0 && numberOfChanginfgOfficers != 0) {
+            numberOfChangeingArea = statement.executeUpdate(queryArea);
+            if (numberOfChangeingArea != 0 && numberOfChanginfgOfficers != 0) {
                 return true;
             } else {
                 return false;

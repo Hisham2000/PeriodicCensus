@@ -4,7 +4,7 @@ package Controller;
 import Model.OfficerDataBase;
 import java.util.ArrayList;
 
-public class OfficerController {
+public class OfficerController{
     OfficerDataBase officerDataBase = new OfficerDataBase();
     
     public boolean chickUserNameAndPassword(String name , int password)
