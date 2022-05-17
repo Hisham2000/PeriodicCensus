@@ -8,6 +8,7 @@ public class UsingForJFrame implements ServiceOnJframe{
     
     public void closeThGUI(JFrame jFrame)
     {
+        //JFrame window to be destroyed and cleaned up by the operating system
         jFrame.dispose();
     }
     

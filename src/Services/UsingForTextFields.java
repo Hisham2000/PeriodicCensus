@@ -13,6 +13,7 @@ public class UsingForTextFields implements ServiceTextField{
     
     public boolean chickInteger(JTextField jTextField)
     {
+        //The trick here if he cant convert it so you will go to catch because it is not Number
         String data = jTextField.getText();
         try{
             int number=Integer.parseInt(data);

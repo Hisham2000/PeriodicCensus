@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 public class UserDataBase implements iUserDataBase{  
     
+    //Singlto to create An instance of Connection DataBase
     ConnectionToDataBase connectionToDataBase = ConnectionToDataBase.getInstance();
     
     private Connection connection = connectionToDataBase.getConnection();

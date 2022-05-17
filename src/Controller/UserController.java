@@ -2,7 +2,6 @@
 package Controller;
 
 import Model.UserDataBase;
-import Model.iDatabase;
 import java.util.ArrayList;
 
 public class UserController {
@@ -11,14 +10,12 @@ public class UserController {
     
     public boolean chickUserNameAndPassword(String name , int password)
     {
-        if(userDataBase.chick(password, name)) return true;
-        else return false;
+        return userDataBase.chick(password, name);
     }
     
     public  String searchByIDForUser(int ID)
     {
-           String data = userDataBase.searchByID(ID);
-           return data;
+           return userDataBase.searchByID(ID);
     }
     
     public boolean updateRecords(ArrayList<String> data)

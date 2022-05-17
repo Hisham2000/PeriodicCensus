@@ -30,6 +30,7 @@ public class AdminContrllingOfficer extends javax.swing.JFrame {
         this.serviceTextField.askForRequest(txtO_SSN);
     }
 
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -254,6 +255,7 @@ public class AdminContrllingOfficer extends javax.swing.JFrame {
         this.serviceOnJframe.closeThGUI(this);
     }//GEN-LAST:event_btnAddActionPerformed
 
+    
     private void getDataFromCurrentRow() {
         model = (DefaultTableModel)table.getModel();
         int Current = table.getSelectedRow();

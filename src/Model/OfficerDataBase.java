@@ -6,11 +6,14 @@ import java.util.ArrayList;
 
 public class OfficerDataBase implements iOfficerDataBase {
 
+    //Singlton Create Connection To DataBase
     ConnectionToDataBase connectionToDataBase = ConnectionToDataBase.getInstance();
+    
     private Connection connection = connectionToDataBase.getConnection();
 
     public void acceptUser(int id) {
         try {
+            // Number 1 is Meaning that You Are Accept;
             String query = "UPDATE dataofuser SET CheckState = 1 WHERE U_SSN = " + id;
             Statement statement = connection.createStatement();
             statement.executeUpdate(query);
@@ -20,6 +23,7 @@ public class OfficerDataBase implements iOfficerDataBase {
 
     public void rejectUsers(int id) {
         try {
+            //Number 2 Means that you are rejected;
             String query = "UPDATE dataofuser SET CheckState = 2 WHERE U_SSN = " + id;
             Statement statement = connection.createStatement();
             statement.executeUpdate(query);
@@ -34,8 +38,10 @@ public class OfficerDataBase implements iOfficerDataBase {
             String query = "SELECT O_SSN  ,Name FROM dataofofficer WHERE O_SSN = " + id + " AND Name = '" + name + "'";
             Statement statement = connection.createStatement();
             ResultSet reulsSet = statement.executeQuery(query);
+            //It return the First record from Data Base;
             checkUser = reulsSet.next();
         } catch (Exception e) {
+            //If nothing Returned It make it False;
             checkUser = false;
         }
         return checkUser;
@@ -52,6 +58,8 @@ public class OfficerDataBase implements iOfficerDataBase {
                 String data = String.valueOf(resultSet.getInt("O_SSN")) + " ";
                 data += resultSet.getString("Name") + " ";
                 data += resultSet.getString("Location");
+                // data have an data of each officer;
+                // we Put it in arrayList to git data Of Multi Officer
                 requestedData.add(data);
                 data = "";
             }

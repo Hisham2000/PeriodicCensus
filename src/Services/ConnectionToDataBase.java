@@ -4,6 +4,9 @@ package Services;
 import java.sql.*;
 
 public class ConnectionToDataBase {
+    
+    //Here Singlton Design Pattern
+    //Eager singlton
     private static ConnectionToDataBase instance = new ConnectionToDataBase();
     private ConnectionUsage connectionUsage = new ConnectionUsage();
     

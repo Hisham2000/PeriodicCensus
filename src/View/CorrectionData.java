@@ -2,12 +2,12 @@ package View;
 
 import Controller.UserController;
 import javax.swing.JOptionPane;
-import Services.UsingForTextFields;
 import java.util.ArrayList;
 import Services.ServiceOnJframe;
 import Services.ServiceTextField;
 
 public class CorrectionData extends javax.swing.JFrame {
+
     int ID;
     private String name;
     private String martialState;
@@ -16,16 +16,16 @@ public class CorrectionData extends javax.swing.JFrame {
     private String sex;
     private int age;
     private int counterOfChanges;
-    private String userDataInClass="";
-    
+    private String userDataInClass = "";
+
     private ServiceOnJframe serviceOnJframe;
     private ServiceTextField serviceTextField;
-    
+
     private String[] arrData;
-         
-    private int[] changes=new int[6];
     
-    
+    // 6 is for six component i hava in GUI
+    private int[] changes = new int[6];
+
     public CorrectionData() {
         initComponents();
     }
@@ -37,7 +37,7 @@ public class CorrectionData extends javax.swing.JFrame {
         ID = id;
         userDataInClass = userDataInClass.concat(data);
         arrData = data.split(" ");
-       setDataINFrame();
+        setDataINFrame();
     }
 
     @SuppressWarnings("unchecked")
@@ -255,8 +255,7 @@ public class CorrectionData extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void setDataINFrame()
-    {
+    private void setDataINFrame() {
         this.serviceTextField.setDataInFields(txtName, arrData[0]);
         this.serviceTextField.setDataInFields(txtmstate, arrData[1]);
         this.serviceTextField.setDataInFields(txtAdress, arrData[2]);
@@ -264,7 +263,7 @@ public class CorrectionData extends javax.swing.JFrame {
         this.serviceTextField.setDataInFields(txtGender, arrData[4]);
         this.serviceTextField.setDataInFields(txtAge, arrData[5]);
     }
-    
+
     private void setDataInVariables() {
         name = this.serviceOnJframe.getDataFromGUI(txtName);
         martialState = this.serviceOnJframe.getDataFromGUI(txtmstate);
@@ -274,22 +273,45 @@ public class CorrectionData extends javax.swing.JFrame {
         age = this.serviceOnJframe.getIntFromGUI(txtAge);
     }
 
-    
-
-    private boolean equalityOfData()
-    {
+    private boolean equalityOfData() {
         counterOfChanges = 0;
-        for(int i = 0 ; i < 5 ; i++)  changes[i] = 0;
-        if(!name.equals(arrData[0])){counterOfChanges++; changes[0]=1;}
-        if(!martialState.equals(arrData[1])){counterOfChanges++; changes[1]=1;}
-        if(!adress.equals(arrData[2])){counterOfChanges++; changes[2]=1;}
-        if(Mobno != Integer.parseInt(arrData[3])){counterOfChanges++; changes[3]=1;}
-        if(!sex.equals(arrData[4])){counterOfChanges++; changes[4]=1;}
-        if(age != Integer.parseInt(arrData[5])){counterOfChanges++; changes[5]=1;}
-        if(counterOfChanges == 0) return true;
-        else return false;
+        
+        //For make all the array = 0
+        for (int i = 0; i < 5; i++) {
+            changes[i] = 0;
+        }
+        
+        if (!name.equals(arrData[0])) {
+            counterOfChanges++;
+            changes[0] = 1;
+        }
+        if (!martialState.equals(arrData[1])) {
+            counterOfChanges++;
+            changes[1] = 1;
+        }
+        if (!adress.equals(arrData[2])) {
+            counterOfChanges++;
+            changes[2] = 1;
+        }
+        if (Mobno != Integer.parseInt(arrData[3])) {
+            counterOfChanges++;
+            changes[3] = 1;
+        }
+        if (!sex.equals(arrData[4])) {
+            counterOfChanges++;
+            changes[4] = 1;
+        }
+        if (age != Integer.parseInt(arrData[5])) {
+            counterOfChanges++;
+            changes[5] = 1;
+        }
+        if (counterOfChanges == 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
-    
+
     private ArrayList<String> setDataIntoArrayList() {
         ArrayList<String> myData = new ArrayList<>();
         myData.add(Integer.toString(ID));
@@ -308,21 +330,20 @@ public class CorrectionData extends javax.swing.JFrame {
 
     private void btnSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendActionPerformed
         ArrayList<String> data = setDataIntoArrayList();
-        CorrectionData correctionData = new CorrectionData(userDataInClass , ID, this.serviceOnJframe, this.serviceTextField);
+        CorrectionData correctionData = new CorrectionData(userDataInClass, ID, this.serviceOnJframe, this.serviceTextField);
         boolean cheaker = equalityOfData();
-        if(cheaker){
+        if (cheaker) {
             JOptionPane.showMessageDialog(null, "you doesnot edit any of the data please edit it and send it again ");
             this.serviceOnJframe.convertFromGUIToGUI(this, correctionData);
             this.serviceOnJframe.closeThGUI(this);
-        }
-        else
-        {
-            JOptionPane.showMessageDialog(null, "you change "+counterOfChanges+" fields successfully ");
+        } else {
+            JOptionPane.showMessageDialog(null, "you change " + counterOfChanges + " fields successfully ");
             UserController userController = new UserController();
             boolean upated = userController.updateRecords(data);
-            if (upated){JOptionPane.showMessageDialog(null, "Data Updated Successfully "); btnBackActionPerformed(evt);}
-            else 
-            {
+            if (upated) {
+                JOptionPane.showMessageDialog(null, "Data Updated Successfully ");
+                btnBackActionPerformed(evt);
+            } else {
                 JOptionPane.showMessageDialog(null, "there was an error please try again :)");
                 this.serviceOnJframe.convertFromGUIToGUI(this, correctionData);
                 this.serviceOnJframe.closeThGUI(this);
