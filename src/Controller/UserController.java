@@ -4,11 +4,12 @@ package Controller;
 import Model.UserDataBase;
 import java.util.ArrayList;
 
-public class UserController {
+public class UserController implements Employee{
     
     UserDataBase userDataBase = new UserDataBase();
     
-    public boolean chickUserNameAndPassword(String name , int password)
+    @Override
+    public boolean chick(String name , int password)
     {
         return userDataBase.chick(password, name);
     }
@@ -18,7 +19,7 @@ public class UserController {
            return userDataBase.searchByID(ID);
     }
     
-    public boolean updateRecords(ArrayList<String> data)
+    public boolean update(ArrayList<String> data)
     {
         return userDataBase.update(data);
     }
@@ -28,12 +29,13 @@ public class UserController {
         return userDataBase.returnTheChickState(id);
     }
     
-    public boolean  insertData(ArrayList<String> data)
+    public boolean insert(ArrayList<String> data)
     {
         return userDataBase.insert(data);
     }
     
-    public ArrayList<String> returnAllRequsets()
+    @Override
+    public ArrayList<String> select()
     {
         return userDataBase.select();
     }

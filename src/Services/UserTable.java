@@ -12,7 +12,7 @@ public class UserTable implements ServiceTable {
     public void setDataFromDataBase(JTable jTable) {
         ArrayList<String> data = new ArrayList<>();
         UserController userController = new UserController();
-        data = userController.returnAllRequsets();
+        data = userController.select();
         DefaultTableModel model = (DefaultTableModel) jTable.getModel();
         for (int i = 0; i < data.size(); i++) {
             Object mydata[] = data.get(i).split(" ");

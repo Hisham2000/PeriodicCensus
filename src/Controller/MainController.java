@@ -16,7 +16,7 @@ public class MainController {
         AdminContrllingOfficer adminContrllingOfficer = new AdminContrllingOfficer(serviceOnJframe,serviceTextField);
         adminContrllingOfficer.setVisible(true);
         adminContrllingOfficer.setLocationRelativeTo(null);
-        
+//        
         // Open Officer And User Parts
 //        StartingPoint startingPoint = new StartingPoint(serviceOnJframe);
 //        startingPoint.setVisible(true);

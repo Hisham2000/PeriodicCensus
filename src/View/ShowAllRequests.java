@@ -14,7 +14,6 @@ public class ShowAllRequests extends javax.swing.JFrame {
 
     public ShowAllRequests() {
         initComponents();
-        userTable.setDataFromDataBase(table);
     }
     
     public ShowAllRequests(ServiceOnJframe serviceOnJframe) {

@@ -298,7 +298,7 @@ public class Request extends javax.swing.JFrame {
                 UserController userController = new UserController();
                 ArrayList<String> data = new ArrayList<>();
                 data = setDataIntoArrayList();
-                if (userController.insertData(data)) {
+                if (userController.insert(data)) {
                     JOptionPane.showMessageDialog(null, "Your Data Succeffully sended");
                     ShowData showData = new ShowData(data, this.serviceOnJframe);
                     this.serviceOnJframe.convertFromGUIToGUI(this, showData);

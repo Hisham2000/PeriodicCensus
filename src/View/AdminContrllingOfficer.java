@@ -241,7 +241,7 @@ public class AdminContrllingOfficer extends javax.swing.JFrame {
             if (this.serviceTextField.chickInteger(txtO_SSN)) {
                 setDataInVariables();
                 ArrayList<String> data = SetDataInArrayList();
-                officerController.insertOfficerData(data);
+                officerController.insert(data);
                 JOptionPane.showMessageDialog(null, "fields is Full");
 
             } else {
@@ -278,7 +278,7 @@ public class AdminContrllingOfficer extends javax.swing.JFrame {
         if (!this.serviceTextField.chickEmpty(txtO_SSN)) {
             getDataFromCurrentRow();
             ArrayList<String> data = SetDataInArrayList();
-            officerController.updateOfficers(data);
+            officerController.update(data);
             JOptionPane.showMessageDialog(null, "YOur data Have Been Edited Successfully :)");
         }
         else JOptionPane.showMessageDialog(null, "You shold let the O_SSN Filled Empty");
@@ -289,7 +289,7 @@ public class AdminContrllingOfficer extends javax.swing.JFrame {
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         getDataFromCurrentRow();
-        officerController.deleteOfficerRecord(O_SSN);
+        officerController.delete(O_SSN);
         AdminContrllingOfficer adminContrllingOfficer = new AdminContrllingOfficer(this.serviceOnJframe, this.serviceTextField);
         this.serviceOnJframe.convertFromGUIToGUI(this, adminContrllingOfficer);
         this.serviceOnJframe.closeThGUI(this);

@@ -4,7 +4,6 @@ package View;
 import javax.swing.JOptionPane;
 import Controller.UserController;
 import Services.ServiceOnJframe;
-import Services.UsingForTextFields;
 import Services.ServiceTextField;
 
 public class LogIn extends javax.swing.JFrame {
@@ -173,7 +172,7 @@ public class LogIn extends javax.swing.JFrame {
             userName = this.serviceOnJframe.getDataFromGUI(txtUserAccount);
             password = this.serviceOnJframe.getIntFromGUI(txtPassword);
             UserController userController =new UserController();
-            if(userController.chickUserNameAndPassword(userName, password))
+            if(userController.chick(userName, password))
             {
                 Home home = new Home(this.serviceOnJframe);
                 this.serviceOnJframe.convertFromGUIToGUI(this, home);

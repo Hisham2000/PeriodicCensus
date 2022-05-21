@@ -1,11 +1,15 @@
 package View;
 
+import Services.EmployeeFactory;
 import Services.ServiceOnJframe;
 import Services.ServiceTextField;
 import Services.UsingForTextFields;
+import Controller.Employee;
+
 public class StartingPoint extends javax.swing.JFrame {
     
-    ServiceOnJframe serviceOnJframe;
+    private ServiceOnJframe serviceOnJframe;
+    private EmployeeFactory employeeFactory = new EmployeeFactory();
     
     public StartingPoint() {
         initComponents();
@@ -91,6 +95,7 @@ public class StartingPoint extends javax.swing.JFrame {
 
     private void btnOfficerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOfficerActionPerformed
         ServiceTextField serviceTextField = new UsingForTextFields();
+        Employee employee = employeeFactory.getEmployee("Officer");
         OfficerLogIn officerLogIn = new OfficerLogIn(this.serviceOnJframe, serviceTextField);
         this.serviceOnJframe.convertFromGUIToGUI(this, officerLogIn);
         this.serviceOnJframe.closeThGUI(this);
@@ -98,6 +103,7 @@ public class StartingPoint extends javax.swing.JFrame {
 
     private void btnUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUserActionPerformed
         ServiceTextField serviceTextField = new UsingForTextFields();
+        Employee employee = employeeFactory.getEmployee("User");
         LogIn logIn = new LogIn(this.serviceOnJframe, serviceTextField);
         this.serviceOnJframe.convertFromGUIToGUI(this, logIn);
         this.serviceOnJframe.closeThGUI(this);

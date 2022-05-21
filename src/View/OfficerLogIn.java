@@ -1,7 +1,8 @@
-
 package View;
 
+import Controller.Employee;
 import Controller.OfficerController;
+import Services.EmployeeFactory;
 import Services.ServiceOnJframe;
 import javax.swing.JOptionPane;
 import Services.ServiceTextField;
@@ -10,11 +11,11 @@ public class OfficerLogIn extends javax.swing.JFrame {
 
     private ServiceOnJframe serviceOnJframe;
     private ServiceTextField serviceTextField;
-    
+
     public OfficerLogIn() {
         initComponents();
     }
-    
+
     public OfficerLogIn(ServiceOnJframe serviceOnJframe, ServiceTextField serviceTextField) {
         initComponents();
         this.serviceOnJframe = serviceOnJframe;
@@ -169,15 +170,19 @@ public class OfficerLogIn extends javax.swing.JFrame {
         if (this.serviceTextField.chickEmpty(txtPassword) && this.serviceTextField.chickEmpty(txtUserAccount) && this.serviceTextField.chickInteger(txtPassword)) {
             userName = this.serviceOnJframe.getDataFromGUI(txtUserAccount);
             password = this.serviceOnJframe.getIntFromGUI(txtPassword);
-            OfficerController officerController =new OfficerController();
-            if(officerController.chickUserNameAndPassword(userName, password))
-            {
+            //OfficerController officerController = new OfficerController();
+             Employee officerController = EmployeeFactory.getEmployee("Officer");
+
+            if (officerController.chick(userName, password)) {
                 ShowAllRequests showAllRequests = new ShowAllRequests(this.serviceOnJframe);
                 this.serviceOnJframe.convertFromGUIToGUI(this, showAllRequests);
                 this.serviceOnJframe.closeThGUI(this);
+            } else {
+                JOptionPane.showMessageDialog(null, "Please try again with true data ");
             }
-            else JOptionPane.showMessageDialog(null, "Please try again with true data ");
-        } else JOptionPane.showMessageDialog(null, "You Put Invalid Value ");
+        } else {
+            JOptionPane.showMessageDialog(null, "You Put Invalid Value ");
+        }
         this.serviceTextField.clearText(txtPassword);
         this.serviceTextField.clearText(txtUserAccount);
         this.serviceTextField.askForRequest(txtUserAccount);

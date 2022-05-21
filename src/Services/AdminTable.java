@@ -13,7 +13,7 @@ public class AdminTable implements ServiceTable {
     public void setDataFromDataBase (JTable jTable) {
         ArrayList<String> data = new ArrayList<>();
         OfficerController officerController = new OfficerController();
-        data = officerController.retunAllOfficers();
+        data = officerController.select();
         model = (DefaultTableModel) jTable.getModel();
         for (int i = 0; i < data.size(); i++) {
             Object mydata[] = data.get(i).split(" ");

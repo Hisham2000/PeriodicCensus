@@ -4,10 +4,11 @@ package Controller;
 import Model.OfficerDataBase;
 import java.util.ArrayList;
 
-public class OfficerController{
+public class OfficerController implements Employee{
     OfficerDataBase officerDataBase = new OfficerDataBase();
     
-    public boolean chickUserNameAndPassword(String name , int password)
+    @Override
+    public boolean chick(String name , int password)
     {
         return officerDataBase.chick(password, name);
     }
@@ -22,22 +23,24 @@ public class OfficerController{
         officerDataBase.rejectUsers(id);
     }
     
-    public void deleteOfficerRecord(int O_SSN)
+    public void delete(int O_SSN)
     {
         officerDataBase.delete(O_SSN);
     }
     
-    public void updateOfficers(ArrayList<String> data)
+    public void update(ArrayList<String> data)
     {
         officerDataBase.update(data);
     }
     
-    public void insertOfficerData(ArrayList<String> data)
+    
+    public void insert(ArrayList<String> data)
     {
         officerDataBase.insert(data);
     }
     
-    public ArrayList<String> retunAllOfficers( )
+    @Override
+    public ArrayList<String> select( )
     {
         return officerDataBase.select();
     }

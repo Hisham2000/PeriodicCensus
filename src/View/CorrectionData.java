@@ -329,6 +329,7 @@ public class CorrectionData extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnExitActionPerformed
 
     private void btnSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendActionPerformed
+        setDataInVariables();
         ArrayList<String> data = setDataIntoArrayList();
         CorrectionData correctionData = new CorrectionData(userDataInClass, ID, this.serviceOnJframe, this.serviceTextField);
         boolean cheaker = equalityOfData();
@@ -339,7 +340,7 @@ public class CorrectionData extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(null, "you change " + counterOfChanges + " fields successfully ");
             UserController userController = new UserController();
-            boolean upated = userController.updateRecords(data);
+            boolean upated = userController.update(data);
             if (upated) {
                 JOptionPane.showMessageDialog(null, "Data Updated Successfully ");
                 btnBackActionPerformed(evt);
